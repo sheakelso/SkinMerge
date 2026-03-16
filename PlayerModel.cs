@@ -34,12 +34,6 @@ public partial class PlayerModel : Node3D
     private Material _currentLayerMaterial;
     private Texture _currentTexture;
 
-    public override void _Ready()
-    {
-        SetMaterials(DefaultSkinMaterial, DefaultLayerMaterial);
-        SetTexture(DefaultTexture);
-    }
-
     public void SetMaterials(Material skin, Material layer)
     {
         _currentSkinMaterial = skin;

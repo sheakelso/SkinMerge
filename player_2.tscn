@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://dqjgx365hxx07"]
+
+[ext_resource type="PackedScene" uid="uid://d3rxr3u5yoq7f" path="res://player2.blend" id="1_8xjnt"]
+[ext_resource type="Script" uid="uid://cdot8n7iav3qs" path="res://PlayerModel.cs" id="2_ryqyf"]
+[ext_resource type="Material" uid="uid://fifk5u5jo5s0" path="res://materials/paint_overlays/paint_overlay.tres" id="2_ufh5k"]
+[ext_resource type="Script" uid="uid://8pfhkg4rt6au" path="res://PlayerModelPart.cs" id="3_1hlws"]
+[ext_resource type="Material" uid="uid://b8kirkcxdg3fv" path="res://materials/skin.tres" id="3_6iqoo"]
+[ext_resource type="Script" uid="uid://thnyg43d23si" path="res://PaintableMesh.cs" id="3_ufh5k"]
+[ext_resource type="Material" uid="uid://bg61w7mpf058w" path="res://materials/layer.tres" id="4_jaoer"]
+[ext_resource type="Texture2D" uid="uid://fv62e8lbwifm" path="res://textures/Image_0.png" id="5_6iqoo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x3sgo"]
+size = Vector3(0.5, 0.75, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ufh5k"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ryqyf"]
+size = Vector3(0.25, 0.75, 0.25)
+
+[node name="PlayerModel" unique_id=1029154210 node_paths=PackedStringArray("Head", "Body", "RightArm", "LeftArm", "RightLeg", "LeftLeg") instance=ExtResource("1_8xjnt")]
+script = ExtResource("2_ryqyf")
+Head = NodePath("Waist/Head")
+Body = NodePath("Waist/Body")
+RightArm = NodePath("Waist/Right Arm")
+LeftArm = NodePath("Waist/Left Arm")
+RightLeg = NodePath("Right Leg")
+LeftLeg = NodePath("Left Leg")
+DefaultSkinMaterial = ExtResource("3_6iqoo")
+DefaultLayerMaterial = ExtResource("4_jaoer")
+DefaultTexture = ExtResource("5_6iqoo")
+
+[node name="Body" parent="Waist" parent_id_path=PackedInt32Array(1285255347) index="0" unique_id=1184304016 node_paths=PackedStringArray("Skin")]
+script = ExtResource("3_1hlws")
+Skin = NodePath("Body_001/BodyCollider")
+
+[node name="Body Layer" parent="Waist/Body" index="0" unique_id=2137809845]
+material_override = ExtResource("4_jaoer")
+
+[node name="Body_001" parent="Waist/Body" index="1" unique_id=780837496]
+material_override = ExtResource("3_6iqoo")
+material_overlay = ExtResource("2_ufh5k")
+
+[node name="BodyCollider" type="StaticBody3D" parent="Waist/Body/Body_001" index="0" unique_id=1648983584 node_paths=PackedStringArray("Mesh")]
+script = ExtResource("3_ufh5k")
+Mesh = NodePath("..")
+PaintOverlayMaterial = ExtResource("2_ufh5k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Waist/Body/Body_001/BodyCollider" index="0" unique_id=385200328]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.125, 0)
+shape = SubResource("BoxShape3D_x3sgo")
+
+[node name="Head" parent="Waist" parent_id_path=PackedInt32Array(1285255347) index="1" unique_id=395156799 node_paths=PackedStringArray("Skin")]
+script = ExtResource("3_1hlws")
+Skin = NodePath("Head_001/HeadCollider")
+
+[node name="Hat Layer" parent="Waist/Head" index="0" unique_id=1793368151]
+material_override = ExtResource("4_jaoer")
+
+[node name="Head_001" parent="Waist/Head" index="1" unique_id=565803254]
+material_override = ExtResource("3_6iqoo")
+material_overlay = ExtResource("2_ufh5k")
+
+[node name="HeadCollider" type="StaticBody3D" parent="Waist/Head/Head_001" index="0" unique_id=1550609722 node_paths=PackedStringArray("Mesh")]
+script = ExtResource("3_ufh5k")
+Mesh = NodePath("..")
+PaintOverlayMaterial = ExtResource("2_ufh5k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Waist/Head/Head_001/HeadCollider" index="0" unique_id=478543211]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+shape = SubResource("BoxShape3D_ufh5k")
+
+[node name="Left Arm" parent="Waist" parent_id_path=PackedInt32Array(1285255347) index="2" unique_id=525156149 node_paths=PackedStringArray("Skin")]
+script = ExtResource("3_1hlws")
+Skin = NodePath("Left Arm_001/LeftArmCollider")
+
+[node name="Left Arm_001" parent="Waist/Left Arm" index="1" unique_id=1422992517]
+material_override = ExtResource("3_6iqoo")
+material_overlay = ExtResource("2_ufh5k")
+
+[node name="LeftArmCollider" type="StaticBody3D" parent="Waist/Left Arm/Left Arm_001" index="0" unique_id=627149455 node_paths=PackedStringArray("Mesh")]
+script = ExtResource("3_ufh5k")
+Mesh = NodePath("..")
+PaintOverlayMaterial = ExtResource("2_ufh5k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Waist/Left Arm/Left Arm_001/LeftArmCollider" index="0" unique_id=316097337]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, 1.125, 0)
+shape = SubResource("BoxShape3D_ryqyf")
+
+[node name="Right Arm" parent="Waist" parent_id_path=PackedInt32Array(1285255347) index="3" unique_id=2049148599 node_paths=PackedStringArray("Skin")]
+script = ExtResource("3_1hlws")
+Skin = NodePath("Right Arm_001/RightArmCollider")
+
+[node name="Right Arm Layer" parent="Waist/Right Arm" index="0" unique_id=1637691619]
+material_override = ExtResource("4_jaoer")
+
+[node name="Right Arm_001" parent="Waist/Right Arm" index="1" unique_id=1962630016]
+material_override = ExtResource("3_6iqoo")
+material_overlay = ExtResource("2_ufh5k")
+
+[node name="RightArmCollider" type="StaticBody3D" parent="Waist/Right Arm/Right Arm_001" index="0" unique_id=1060681813 node_paths=PackedStringArray("Mesh")]
+script = ExtResource("3_ufh5k")
+Mesh = NodePath("..")
+PaintOverlayMaterial = ExtResource("2_ufh5k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Waist/Right Arm/Right Arm_001/RightArmCollider" index="0" unique_id=1037520642]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, 1.125, 0)
+shape = SubResource("BoxShape3D_ryqyf")
+
+[node name="Right Leg" parent="." index="1" unique_id=1455567727 node_paths=PackedStringArray("Skin")]
+script = ExtResource("3_1hlws")
+Skin = NodePath("Right Leg_001/RightLegCollider")
+
+[node name="Right Leg Layer" parent="Right Leg" index="0" unique_id=979913345]
+material_override = ExtResource("4_jaoer")
+
+[node name="Right Leg_001" parent="Right Leg" index="1" unique_id=1220207866]
+material_override = ExtResource("3_6iqoo")
+material_overlay = ExtResource("2_ufh5k")
+
+[node name="RightLegCollider" type="StaticBody3D" parent="Right Leg/Right Leg_001" index="0" unique_id=1378732167 node_paths=PackedStringArray("Mesh")]
+script = ExtResource("3_ufh5k")
+Mesh = NodePath("..")
+PaintOverlayMaterial = ExtResource("2_ufh5k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Right Leg/Right Leg_001/RightLegCollider" index="0" unique_id=416675779]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.115, 0.375, 0)
+shape = SubResource("BoxShape3D_ryqyf")
+
+[node name="Left Leg" parent="." index="2" unique_id=1453774230 node_paths=PackedStringArray("Skin")]
+script = ExtResource("3_1hlws")
+Skin = NodePath("Left Leg_001/LeftLegCollider")
+
+[node name="Left Leg Layer" parent="Left Leg" index="0" unique_id=1853739717]
+material_override = ExtResource("4_jaoer")
+
+[node name="Left Leg_001" parent="Left Leg" index="1" unique_id=1432306533]
+material_override = ExtResource("3_6iqoo")
+material_overlay = ExtResource("2_ufh5k")
+
+[node name="LeftLegCollider" type="StaticBody3D" parent="Left Leg/Left Leg_001" index="0" unique_id=365045227 node_paths=PackedStringArray("Mesh")]
+script = ExtResource("3_ufh5k")
+Mesh = NodePath("..")
+PaintOverlayMaterial = ExtResource("2_ufh5k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Left Leg/Left Leg_001/LeftLegCollider" index="0" unique_id=1987624551]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115, 0.375, 0)
+shape = SubResource("BoxShape3D_ryqyf")
