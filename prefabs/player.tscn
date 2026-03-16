@@ -1,0 +1,518 @@
+[gd_scene format=4 uid="uid://duidt6h4ewlj5"]
+
+[ext_resource type="Material" uid="uid://b8kirkcxdg3fv" path="res://materials/skin.tres" id="2_1txc5"]
+[ext_resource type="Script" uid="uid://cdot8n7iav3qs" path="res://PlayerModel.cs" id="2_g2jcq"]
+[ext_resource type="Material" uid="uid://bg61w7mpf058w" path="res://materials/layer.tres" id="3_ht1c8"]
+[ext_resource type="Script" uid="uid://8pfhkg4rt6au" path="res://PlayerModelPart.cs" id="3_u51tk"]
+[ext_resource type="Material" uid="uid://fifk5u5jo5s0" path="res://materials/paint_overlays/paint_overlay.tres" id="4_ht1c8"]
+[ext_resource type="Script" uid="uid://thnyg43d23si" path="res://PaintableMesh.cs" id="5_kbsxf"]
+[ext_resource type="Texture2D" uid="uid://d3oe4asptbklg" path="res://skins/steve.png" id="5_rgeog"]
+[ext_resource type="Texture2D" uid="uid://jh6dy5px5xby" path="res://textures/Image.png" id="6_kbsxf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6rdlb"]
+resource_name = "steve.png.001"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("6_kbsxf")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_kesgs"]
+_surfaces = [{
+"aabb": AABB(-26.5625, -14.0625, -151.5625, 53.125, 28.125, 78.125),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQABAABAAMAAgAFAAAABQADAAAAAgAEAAYAAgAGAAUABAADAAcABgAEAAcABQAHAAMABgAHAAUA"),
+"name": "steve.png.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("//8AAP//AAAAAAAAAAAAAAAAAAD//wAA//8AAAAAAAAAAP//AAAAAP///////wAAAAD/////AAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_fg8si"]
+resource_name = "player_Body Layer_001"
+_surfaces = [{
+"aabb": AABB(-26.5625, -14.0625, -151.5625, 53.125, 28.125, 78.125),
+"attribute_data": PackedByteArray("/0//v/9v/4//b/+//0//j/8//7//T/+P/0//v/8//4//f/+//5//j/+f/7//f/+P/2//v/9//4//f/+//2//j/9v/3//T/+P/0//f/9v/4//j/+P/2//f/9v/4//j/9/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_6rdlb"),
+"name": "steve.png.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("//8AAP////8AAAAAAAD//wAAAAD///////8AAAAA//////////9U1f//AAAAAFTV//8AAP//VNX/////AABU1QAA//////+//////wAA/7//////////vwAA//8AAP+/AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAP//AAD/////AAAAAP///////wAA//8AAAAAAAD//wAAAAD//wAA////////AAD//wAA//8AAAAA/////wAA/3//P/9//z//f/8//3//P6qqVFWqqlRVqqpUVaqqVFX///9/////f////3////9/VNVU1VTVVNVU1VTVVNVU1f9/////f////3////9/////f/9//3//f/9//3//f/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_kesgs")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_o4lc1"]
+_surfaces = [{
+"aabb": AABB(-25, -12.5, -150, 50, 25, 75),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQABAABAAMAAgAFAAAABQADAAAAAgAEAAYAAgAGAAUABAADAAcABgAEAAcABQAHAAMABgAHAAUA"),
+"name": "steve.png.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("//8AAP//AAAAAAAAAAAAAAAAAAD//wAA//8AAAAAAAAAAP//AAAAAP///////wAAAAD/////AAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ydyu2"]
+resource_name = "player_Body_1_001"
+_surfaces = [{
+"aabb": AABB(-25, -12.5, -150, 50, 25, 75),
+"attribute_data": PackedByteArray("/0//f/9v/0//b/9//0//T/8//3//T/9P/0//f/8//0//f/9//5//T/+f/3//f/9P/2//f/9//0//f/9//2//T/9v/z//T/9P/0//P/9v/0//j/9P/2//P/9v/0//j/8/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_6rdlb"),
+"name": "steve.png.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("//8AAP////8AAAAAAAD//wAAAAD///////8AAAAA//////////9U1f//AAAAAFTV//8AAP//VNX/////AABU1QAA//////+//////wAA/7//////////vwAA//8AAP+/AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAP//AAD/////AAAAAP///////wAA//8AAAAAAAD//wAAAAD//wAA////////AAD//wAA//8AAAAA/////wAA/3//P/9//z//f/8//3//P6qqVFWqqlRVqqpUVaqqVFX///9/////f////3////9/VNVU1VTVVNVU1VTVVNVU1f9/////f////3////9/////f/9//3//f/9//3//f/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_o4lc1")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cno8h"]
+_surfaces = [{
+"aabb": AABB(-28.125, -28.125, -203.125, 56.25, 56.25, 56.25),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQABAABAAMAAgAFAAAABQADAAAAAgAEAAYAAgAGAAUABAADAAcABgAEAAcABQAHAAMABgAHAAUA"),
+"name": "steve.png.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("//8AAP//AAAAAAAAAAAAAAAAAAD//wAA//8AAAAAAAAAAP//AAAAAP///////wAAAAD/////AAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rny0c"]
+resource_name = "player_Hat Layer_001"
+_surfaces = [{
+"aabb": AABB(-28.125, -28.125, -203.125, 56.25, 56.25, 56.25),
+"attribute_data": PackedByteArray("/5//P/+//x//v/8//5//H/9//z//n/8f/5//P/9//x//3/8/////H////z//3/8f/7//P//f/x//3/8//7//H/+/AAD/n/8f/58AAP+//x//3/8f/78AAP+//x//3wAA"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_6rdlb"),
+"name": "steve.png.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("//8AAP////8AAAAAAAD//wAAAAD///////8AAAAA//////////9U1f//AAAAAFTV//8AAP//VNX/////AABU1QAA//////+//////wAA/7//////////vwAA//8AAP+/AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAP//AAD/////AAAAAP///////wAA//8AAAAAAAD//wAAAAD//wAA////////AAD//wAA//8AAAAA/////wAA/3//P/9//z//f/8//3//P6qqVFWqqlRVqqpUVaqqVFX///9/////f////3////9/VNVU1VTVVNVU1VTVVNVU1f9/////f////3////9/////f/9//3//f/9//3//f/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_cno8h")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xmxrr"]
+_surfaces = [{
+"aabb": AABB(-25, -25, -200, 50, 50, 50),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQABAABAAMAAgAFAAAABQADAAAAAgAEAAYAAgAGAAUABAADAAcABgAEAAcABQAHAAMABgAHAAUA"),
+"name": "steve.png.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("//8AAP//AAAAAAAAAAAAAAAAAAD//wAA//8AAAAAAAAAAP//AAAAAP///////wAAAAD/////AAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ptx7f"]
+resource_name = "player_Head_1_007"
+_surfaces = [{
+"aabb": AABB(-25, -25, -200, 50, 50, 50),
+"attribute_data": PackedByteArray("/x//P/8//x//P/8//x//HwAA/z//H/8f/x//PwAA/x//X/8//3//H/9//z//X/8f/z//P/9f/x//X/8//z//H/8/AAD/H/8f/x8AAP8//x//X/8f/z8AAP8//x//XwAA"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_6rdlb"),
+"name": "steve.png.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("//8AAP////8AAAAAAAD//wAAAAD///////8AAAAA//////////9U1f//AAAAAFTV//8AAP//VNX/////AABU1QAA//////+//////wAA/7//////////vwAA//8AAP+/AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAP//AAD/////AAAAAP///////wAA//8AAAAAAAD//wAAAAD//wAA////////AAD//wAA//8AAAAA/////wAA/3//P/9//z//f/8//3//P6qqVFWqqlRVqqpUVaqqVFX///9/////f////3////9/VNVU1VTVVNVU1VTVVNVU1f9/////f////3////9/////f/9//3//f/9//3//f/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_xmxrr")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rgeog"]
+size = Vector3(50, 50, 50)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_s6ilp"]
+_surfaces = [{
+"aabb": AABB(-51.5625, -14.0625, -151.5625, 28.125, 28.125, 78.125),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQABAABAAMAAgAFAAAABQADAAAAAgAEAAYAAgAGAAUABAADAAcABgAEAAcABQAHAAMABgAHAAUA"),
+"name": "steve.png.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("//8AAP//AAAAAAAAAAAAAAAAAAD//wAA//8AAAAAAAAAAP//AAAAAP///////wAAAAD/////AAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_80auo"]
+resource_name = "player_Left Arm Layer_001"
+_surfaces = [{
+"aabb": AABB(-51.5625, -14.0625, -151.5625, 28.125, 28.125, 78.125),
+"attribute_data": PackedByteArray("/8/////f/8//3////8//z/+/////z//P/8////+//8//7///////z///////7//P/9/////v/8//7////9//z//f/7//z//P/8//v//f/8//7//P/9//v//f/8//7/+/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_6rdlb"),
+"name": "steve.png.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("//8AAP////8AAAAAAAD//wAAAAD///////8AAAAA//////////9U1f//AAAAAFTV//8AAP//VNX/////AABU1QAA//////+//////wAA/7//////////vwAA//8AAP+/AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAP//AAD/////AAAAAP///////wAA//8AAAAAAAD//wAAAAD//wAA////////AAD//wAA//8AAAAA/////wAA/3//P/9//z//f/8//3//P6qqVFWqqlRVqqpUVaqqVFX///9/////f////3////9/VNVU1VTVVNVU1VTVVNVU1f9/////f////3////9/////f/9//3//f/9//3//f/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_s6ilp")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_085sd"]
+_surfaces = [{
+"aabb": AABB(-50, -12.5, -150, 25, 25, 75),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQABAABAAMAAgAFAAAABQADAAAAAgAEAAYAAgAGAAUABAADAAcABgAEAAcABQAHAAMABgAHAAUA"),
+"name": "steve.png.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("//8AAP//AAAAAAAAAAAAAAAAAAD//wAA//8AAAAAAAAAAP//AAAAAP///////wAAAAD/////AAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_knnep"]
+resource_name = "player_Left Arm_1_001"
+_surfaces = [{
+"aabb": AABB(-50, -12.5, -150, 25, 25, 75),
+"attribute_data": PackedByteArray("/4////+f/8//n////4//z/9/////j//P/4////9//8//r////7//z/+/////r//P/5////+v/8//r////5//z/+f/7//j//P/4//v/+f/8//r//P/5//v/+f/8//r/+/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_6rdlb"),
+"name": "steve.png.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("//8AAP////8AAAAAAAD//wAAAAD///////8AAAAA//////////9U1f//AAAAAFTV//8AAP//VNX/////AABU1QAA//////+//////wAA/7//////////vwAA//8AAP+/AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAP//AAD/////AAAAAP///////wAA//8AAAAAAAD//wAAAAD//wAA////////AAD//wAA//8AAAAA/////wAA/3//P/9//z//f/8//3//P6qqVFWqqlRVqqpUVaqqVFX///9/////f////3////9/VNVU1VTVVNVU1VTVVNVU1f9/////f////3////9/////f/9//3//f/9//3//f/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_085sd")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ho3dt"]
+_surfaces = [{
+"aabb": AABB(23.4375, -14.0625, -151.5625, 28.125, 28.125, 78.125),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQABAABAAMAAgAFAAAABQADAAAAAgAEAAYAAgAGAAUABAADAAcABgAEAAcABQAHAAMABgAHAAUA"),
+"name": "steve.png.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("//8AAP//AAAAAAAAAAAAAAAAAAD//wAA//8AAAAAAAAAAP//AAAAAP///////wAAAAD/////AAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_2m5kg"]
+resource_name = "player_Right Arm Layer_001"
+_surfaces = [{
+"aabb": AABB(23.4375, -14.0625, -151.5625, 28.125, 28.125, 78.125),
+"attribute_data": PackedByteArray("/6//v/+//4//v/+//6//j/+f/7//r/+P/6//v/+f/4//z/+//9//j//f/7//z/+P/7//v//P/4//z/+//7//j/+//3//r/+P/6//f/+//4//z/+P/7//f/+//4//z/9/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_6rdlb"),
+"name": "steve.png.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("//8AAP////8AAAAAAAD//wAAAAD///////8AAAAA//////////9U1f//AAAAAFTV//8AAP//VNX/////AABU1QAA//////+//////wAA/7//////////vwAA//8AAP+/AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAP//AAD/////AAAAAP///////wAA//8AAAAAAAD//wAAAAD//wAA////////AAD//wAA//8AAAAA/////wAA/3//P/9//z//f/8//3//P6qqVFWqqlRVqqpUVaqqVFX///9/////f////3////9/VNVU1VTVVNVU1VTVVNVU1f9/////f////3////9/////f/9//3//f/9//3//f/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ho3dt")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cpnrc"]
+_surfaces = [{
+"aabb": AABB(25, -12.5, -150, 25, 25, 75),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQABAABAAMAAgAFAAAABQADAAAAAgAEAAYAAgAGAAUABAADAAcABgAEAAcABQAHAAMABgAHAAUA"),
+"name": "steve.png.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("//8AAP//AAAAAAAAAAAAAAAAAAD//wAA//8AAAAAAAAAAP//AAAAAP///////wAAAAD/////AAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vv20b"]
+resource_name = "player_Right Arm_1_001"
+_surfaces = [{
+"aabb": AABB(25, -12.5, -150, 25, 25, 75),
+"attribute_data": PackedByteArray("/6//f/+//0//v/9//6//T/+f/3//r/9P/6//f/+f/0//z/9//9//T//f/3//z/9P/7//f//P/0//z/9//7//T/+//z//r/9P/6//P/+//0//z/9P/7//P/+//0//z/8/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_6rdlb"),
+"name": "steve.png.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("//8AAP////8AAAAAAAD//wAAAAD///////8AAAAA//////////9U1f//AAAAAFTV//8AAP//VNX/////AABU1QAA//////+//////wAA/7//////////vwAA//8AAP+/AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAP//AAD/////AAAAAP///////wAA//8AAAAAAAD//wAAAAD//wAA////////AAD//wAA//8AAAAA/////wAA/3//P/9//z//f/8//3//P6qqVFWqqlRVqqpUVaqqVFX///9/////f////3////9/VNVU1VTVVNVU1VTVVNVU1f9/////f////3////9/////f/9//3//f/9//3//f/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_cpnrc")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_locl8"]
+_surfaces = [{
+"aabb": AABB(-2.1875, -14.0625, -76.5625, 28.125, 28.125, 78.125),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQABAABAAMAAgAFAAAABQADAAAAAgAEAAYAAgAGAAUABAADAAcABgAEAAcABQAHAAMABgAHAAUA"),
+"name": "steve.png.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("//8AAP//AAAAAAAAAAAAAAAAAAD//wAA//8AAAAAAAAAAP//AAAAAP///////wAAAAD/////AAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rb08d"]
+resource_name = "player_Right Leg Layer_001"
+_surfaces = [{
+"aabb": AABB(-2.1875, -14.0625, -76.5625, 28.125, 28.125, 78.125),
+"attribute_data": PackedByteArray("/w//v/8f/4//H/+//w//jwAA/7//D/+P/w//vwAA/4//L/+//z//j/8//7//L/+P/x//v/8v/4//L/+//x//j/8f/3//D/+P/w//f/8f/4//L/+P/x//f/8f/4//L/9/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_6rdlb"),
+"name": "steve.png.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("//8AAP////8AAAAAAAD//wAAAAD///////8AAAAA//////////9U1f//AAAAAFTV//8AAP//VNX/////AABU1QAA//////+//////wAA/7//////////vwAA//8AAP+/AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAP//AAD/////AAAAAP///////wAA//8AAAAAAAD//wAAAAD//wAA////////AAD//wAA//8AAAAA/////wAA/3//P/9//z//f/8//3//P6qqVFWqqlRVqqpUVaqqVFX///9/////f////3////9/VNVU1VTVVNVU1VTVVNVU1f9/////f////3////9/////f/9//3//f/9//3//f/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_locl8")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_mse5h"]
+_surfaces = [{
+"aabb": AABB(-0.625, -12.5, -75, 25, 25, 75),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQABAABAAMAAgAFAAAABQADAAAAAgAEAAYAAgAGAAUABAADAAcABgAEAAcABQAHAAMABgAHAAUA"),
+"name": "steve.png.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("//8AAP//AAAAAAAAAAAAAAAAAAD//wAA//8AAAAAAAAAAP//AAAAAP///////wAAAAD/////AAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_y4tdk"]
+resource_name = "player_Right Leg_1_001"
+_surfaces = [{
+"aabb": AABB(-0.625, -12.5, -75, 25, 25, 75),
+"attribute_data": PackedByteArray("/w//f/8f/0//H/9//w//TwAA/3//D/9P/w//fwAA/0//L/9//z//T/8//3//L/9P/x//f/8v/0//L/9//x//T/8f/z//D/9P/w//P/8f/0//L/9P/x//P/8f/0//L/8/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_6rdlb"),
+"name": "steve.png.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("//8AAP////8AAAAAAAD//wAAAAD///////8AAAAA//////////9U1f//AAAAAFTV//8AAP//VNX/////AABU1QAA//////+//////wAA/7//////////vwAA//8AAP+/AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAP//AAD/////AAAAAP///////wAA//8AAAAAAAD//wAAAAD//wAA////////AAD//wAA//8AAAAA/////wAA/3//P/9//z//f/8//3//P6qqVFWqqlRVqqpUVaqqVFX///9/////f////3////9/VNVU1VTVVNVU1VTVVNVU1f9/////f////3////9/////f/9//3//f/9//3//f/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_mse5h")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_dtfin"]
+_surfaces = [{
+"aabb": AABB(-25.9375, -14.0625, -76.5625, 28.125, 28.125, 78.125),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQABAABAAMAAgAFAAAABQADAAAAAgAEAAYAAgAGAAUABAADAAcABgAEAAcABQAHAAMABgAHAAUA"),
+"name": "steve.png.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("//8AAP//AAAAAAAAAAAAAAAAAAD//wAA//8AAAAAAAAAAP//AAAAAP///////wAAAAD/////AAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qec7l"]
+resource_name = "player_Left Leg Layer_001"
+_surfaces = [{
+"aabb": AABB(-25.9375, -14.0625, -76.5625, 28.125, 28.125, 78.125),
+"attribute_data": PackedByteArray("/w////8f/8//H////w//zwAA////D//P/w///wAA/8//L////z//z/8/////L//P/x////8v/8//L////x//z/8f/7//D//P/w//v/8f/8//L//P/x//v/8f/8//L/+/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_6rdlb"),
+"name": "steve.png.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("//8AAP////8AAAAAAAD//wAAAAD///////8AAAAA//////////9U1f//AAAAAFTV//8AAP//VNX/////AABU1QAA//////+//////wAA/7//////////vwAA//8AAP+/AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAP//AAD/////AAAAAP///////wAA//8AAAAAAAD//wAAAAD//wAA////////AAD//wAA//8AAAAA/////wAA/3//P/9//z//f/8//3//P6qqVFWqqlRVqqpUVaqqVFX///9/////f////3////9/VNVU1VTVVNVU1VTVVNVU1f9/////f////3////9/////f/9//3//f/9//3//f/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_dtfin")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_hux85"]
+_surfaces = [{
+"aabb": AABB(-24.375, -12.5, -75, 25, 25, 75),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQABAABAAMAAgAFAAAABQADAAAAAgAEAAYAAgAGAAUABAADAAcABgAEAAcABQAHAAMABgAHAAUA"),
+"name": "steve.png.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("//8AAP//AAAAAAAAAAAAAAAAAAD//wAA//8AAAAAAAAAAP//AAAAAP///////wAAAAD/////AAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ej2qo"]
+resource_name = "player_Left Leg_1_001"
+_surfaces = [{
+"aabb": AABB(-24.375, -12.5, -75, 25, 25, 75),
+"attribute_data": PackedByteArray("/0////9f/8//X////0//z/8/////T//P/0////8//8//b////3//z/9/////b//P/1////9v/8//b////1//z/9f/7//T//P/0//v/9f/8//b//P/1//v/9f/8//b/+/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_6rdlb"),
+"name": "steve.png.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("//8AAP////8AAAAAAAD//wAAAAD///////8AAAAA//////////9U1f//AAAAAFTV//8AAP//VNX/////AABU1QAA//////+//////wAA/7//////////vwAA//8AAP+/AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAP//AAD/////AAAAAP///////wAA//8AAAAAAAD//wAAAAD//wAA////////AAD//wAA//8AAAAA/////wAA/3//P/9//z//f/8//3//P6qqVFWqqlRVqqpUVaqqVFX///9/////f////3////9/VNVU1VTVVNVU1VTVVNVU1f9/////f////3////9/////f/9//3//f/9//3//f/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_hux85")
+
+[node name="PlayerModel" type="Node3D" unique_id=1885585027 node_paths=PackedStringArray("Head", "Body", "RightArm", "LeftArm", "RightLeg", "LeftLeg")]
+script = ExtResource("2_g2jcq")
+Head = NodePath("Waist/Head")
+Body = NodePath("Waist/Body")
+RightArm = NodePath("Waist/Right Arm")
+LeftArm = NodePath("Waist/Left Arm")
+RightLeg = NodePath("Right Leg")
+LeftLeg = NodePath("Left Leg")
+DefaultSkinMaterial = ExtResource("2_1txc5")
+DefaultLayerMaterial = ExtResource("3_ht1c8")
+DefaultTexture = ExtResource("5_rgeog")
+
+[node name="Waist" type="Node3D" parent="." unique_id=1987454695]
+transform = Transform3D(0.01, 0, 0, 0, 0, -0.01, 0, 0.01, 0, 0, 0.75, 0)
+
+[node name="Body" type="Node3D" parent="Waist" unique_id=266125569]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -75)
+script = ExtResource("3_u51tk")
+
+[node name="Body Layer" type="MeshInstance3D" parent="Waist/Body" unique_id=48790721]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 150)
+material_override = ExtResource("3_ht1c8")
+mesh = SubResource("ArrayMesh_fg8si")
+
+[node name="Body_1" type="MeshInstance3D" parent="Waist/Body" unique_id=915903037]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 150)
+material_override = ExtResource("2_1txc5")
+material_overlay = ExtResource("4_ht1c8")
+mesh = SubResource("ArrayMesh_ydyu2")
+
+[node name="Head" type="Node3D" parent="Waist" unique_id=1105162485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -75)
+script = ExtResource("3_u51tk")
+
+[node name="Hat Layer" type="MeshInstance3D" parent="Waist/Head" unique_id=65803858]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 150)
+material_override = ExtResource("3_ht1c8")
+mesh = SubResource("ArrayMesh_rny0c")
+
+[node name="Head_1" type="MeshInstance3D" parent="Waist/Head" unique_id=1330428734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 150)
+material_override = ExtResource("2_1txc5")
+material_overlay = ExtResource("4_ht1c8")
+mesh = SubResource("ArrayMesh_ptx7f")
+
+[node name="HeadCollider" type="StaticBody3D" parent="Waist/Head/Head_1" unique_id=678942134 node_paths=PackedStringArray("Mesh")]
+script = ExtResource("5_kbsxf")
+Mesh = NodePath("..")
+PaintOverlayMaterial = ExtResource("4_ht1c8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Waist/Head/Head_1/HeadCollider" unique_id=1213097354]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -175)
+shape = SubResource("BoxShape3D_rgeog")
+
+[node name="Left Arm" type="Node3D" parent="Waist" unique_id=793676904]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.25, 0, -62.5)
+script = ExtResource("3_u51tk")
+
+[node name="Left Arm Layer" type="MeshInstance3D" parent="Waist/Left Arm" unique_id=1685984165]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.249998, 0, 137.5)
+material_override = ExtResource("3_ht1c8")
+mesh = SubResource("ArrayMesh_80auo")
+
+[node name="Left Arm_1" type="MeshInstance3D" parent="Waist/Left Arm" unique_id=654654190]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.249998, 0, 137.5)
+material_override = ExtResource("2_1txc5")
+material_overlay = ExtResource("4_ht1c8")
+mesh = SubResource("ArrayMesh_knnep")
+
+[node name="Right Arm" type="Node3D" parent="Waist" unique_id=1461280347]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.25, 0, -62.5)
+script = ExtResource("3_u51tk")
+
+[node name="Right Arm Layer" type="MeshInstance3D" parent="Waist/Right Arm" unique_id=633812265]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.249998, 0, 137.5)
+material_override = ExtResource("3_ht1c8")
+mesh = SubResource("ArrayMesh_2m5kg")
+
+[node name="Right Arm_1" type="MeshInstance3D" parent="Waist/Right Arm" unique_id=276338744]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.249998, 0, 137.5)
+material_override = ExtResource("2_1txc5")
+material_overlay = ExtResource("4_ht1c8")
+mesh = SubResource("ArrayMesh_vv20b")
+
+[node name="Right Leg" type="Node3D" parent="." unique_id=409524496]
+transform = Transform3D(0.01, 0, 0, 0, 0, -0.01, 0, 0.01, 0, 0.11875, 0.75, 0)
+script = ExtResource("3_u51tk")
+
+[node name="Right Leg Layer" type="MeshInstance3D" parent="Right Leg" unique_id=1737365141]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.874999, 0, 75)
+material_override = ExtResource("3_ht1c8")
+mesh = SubResource("ArrayMesh_rb08d")
+
+[node name="Right Leg_1" type="MeshInstance3D" parent="Right Leg" unique_id=999511866]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.874999, 0, 75)
+material_override = ExtResource("2_1txc5")
+material_overlay = ExtResource("4_ht1c8")
+mesh = SubResource("ArrayMesh_y4tdk")
+
+[node name="Left Leg" type="Node3D" parent="." unique_id=672539347]
+transform = Transform3D(0.01, 0, 0, 0, 0, -0.01, 0, 0.01, 0, -0.11875, 0.75, 0)
+script = ExtResource("3_u51tk")
+
+[node name="Left Leg Layer" type="MeshInstance3D" parent="Left Leg" unique_id=591066368]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.874999, 0, 75)
+material_override = ExtResource("3_ht1c8")
+mesh = SubResource("ArrayMesh_qec7l")
+
+[node name="Left Leg_1" type="MeshInstance3D" parent="Left Leg" unique_id=1949775178]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.874999, 0, 75)
+material_override = ExtResource("2_1txc5")
+material_overlay = ExtResource("4_ht1c8")
+mesh = SubResource("ArrayMesh_ej2qo")

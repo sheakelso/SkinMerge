@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b8kirkcxdg3fv"]
+
+[ext_resource type="Texture2D" uid="uid://d3oe4asptbklg" path="res://skins/steve.png" id="1_bdscc"]
+
+[resource]
+albedo_texture = ExtResource("1_bdscc")
+texture_filter = 0

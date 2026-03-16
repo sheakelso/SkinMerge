@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dhewfkfsstqey"]
+
+[ext_resource type="PackedScene" uid="uid://duidt6h4ewlj5" path="res://prefabs/player.tscn" id="1_dqbhk"]
+[ext_resource type="Script" uid="uid://iujdluquqpnv" path="res://SkinPainter.cs" id="2_1nggn"]
+
+[sub_resource type="Environment" id="Environment_2rw65"]
+background_mode = 1
+background_color = Color(0.9384497, 0.9384497, 0.9384497, 1)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="3dEditorScene" type="Node3D" unique_id=47230994]
+
+[node name="model" parent="." unique_id=483208417 instance=ExtResource("1_dqbhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013147593, 0, 0.094895124)
+
+[node name="SkinPainter" type="Node" parent="." unique_id=1660466776]
+script = ExtResource("2_1nggn")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=994702750]
+environment = SubResource("Environment_2rw65")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1075077569]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3318347, 1.3800311)

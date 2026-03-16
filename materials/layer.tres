@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bg61w7mpf058w"]
+
+[ext_resource type="Texture2D" uid="uid://d3oe4asptbklg" path="res://skins/steve.png" id="1_pduci"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1_pduci")
+texture_filter = 0
