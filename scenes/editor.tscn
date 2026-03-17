@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://clx36l5gy44uu"]
+
+[ext_resource type="PackedScene" uid="uid://dhewfkfsstqey" path="res://scenes/3d_editor_scene.tscn" id="1_b1cmn"]
+[ext_resource type="Theme" uid="uid://1sljhw6el3lc" path="res://themes/editor.tres" id="1_eqbpn"]
+[ext_resource type="Material" uid="uid://b2rs0g7eolrhl" path="res://materials/grid.tres" id="2_ba0ut"]
+
+[node name="Editor" type="Control" unique_id=103337096]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_eqbpn")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=1498126437]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_eqbpn")
+split_offsets = PackedInt32Array(100)
+dragger_visibility = 2
+split_offset = 100
+
+[node name="Panel" type="Panel" parent="HSplitContainer" unique_id=1224164868]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme = ExtResource("1_eqbpn")
+theme_type_variation = &"BasePanel"
+
+[node name="VSplitContainer" type="VSplitContainer" parent="HSplitContainer/Panel" unique_id=897215107]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_eqbpn")
+theme_override_constants/separation = 6
+split_offsets = PackedInt32Array(242)
+split_offset = 242
+
+[node name="LibraryWindow" type="Control" parent="HSplitContainer/Panel/VSplitContainer" unique_id=1006076096]
+layout_mode = 2
+theme = ExtResource("1_eqbpn")
+
+[node name="Background" type="Panel" parent="HSplitContainer/Panel/VSplitContainer/LibraryWindow" unique_id=1853450597]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_eqbpn")
+theme_type_variation = &"BasePanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/Panel/VSplitContainer/LibraryWindow/Background" unique_id=2010353744]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_eqbpn")
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="TabContainer" type="TabContainer" parent="HSplitContainer/Panel/VSplitContainer/LibraryWindow/Background/MarginContainer" unique_id=1010293104]
+layout_mode = 2
+theme = ExtResource("1_eqbpn")
+current_tab = 0
+
+[node name="Library" type="Control" parent="HSplitContainer/Panel/VSplitContainer/LibraryWindow/Background/MarginContainer/TabContainer" unique_id=1073057858]
+layout_mode = 2
+theme = ExtResource("1_eqbpn")
+metadata/_tab_index = 0
+
+[node name="LayerWindow" type="Control" parent="HSplitContainer/Panel/VSplitContainer" unique_id=855215895]
+layout_mode = 2
+theme = ExtResource("1_eqbpn")
+
+[node name="Background" type="Panel" parent="HSplitContainer/Panel/VSplitContainer/LayerWindow" unique_id=1202286429]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_eqbpn")
+theme_type_variation = &"BasePanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/Panel/VSplitContainer/LayerWindow/Background" unique_id=1054581727]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_eqbpn")
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="TabContainer" type="TabContainer" parent="HSplitContainer/Panel/VSplitContainer/LayerWindow/Background/MarginContainer" unique_id=283394571]
+layout_mode = 2
+theme = ExtResource("1_eqbpn")
+current_tab = 0
+
+[node name="Layers" type="Control" parent="HSplitContainer/Panel/VSplitContainer/LayerWindow/Background/MarginContainer/TabContainer" unique_id=940388110]
+layout_mode = 2
+theme = ExtResource("1_eqbpn")
+metadata/_tab_index = 0
+
+[node name="Control" type="Control" parent="HSplitContainer" unique_id=1096924169]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="HSplitContainer/Control" unique_id=148323121]
+material = ExtResource("2_ba0ut")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HSplitContainer/Control" unique_id=1352516833]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+mouse_target = true
+
+[node name="SubViewport" type="SubViewport" parent="HSplitContainer/Control/SubViewportContainer" unique_id=880881541]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1052, 648)
+render_target_update_mode = 4
+
+[node name="3dEditorScene" parent="HSplitContainer/Control/SubViewportContainer/SubViewport" unique_id=47230994 instance=ExtResource("1_b1cmn")]

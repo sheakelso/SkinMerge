@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dhewfkfsstqey"]
+
+[ext_resource type="Script" uid="uid://iujdluquqpnv" path="res://SkinPainter.cs" id="2_1nggn"]
+[ext_resource type="PackedScene" uid="uid://dqjgx365hxx07" path="res://player_2.tscn" id="2_dqbhk"]
+[ext_resource type="Image" uid="uid://qba644pojai2" path="res://textures/Image2.png" id="3_iksuv"]
+[ext_resource type="Image" uid="uid://ucq8vh8eynhp" path="res://skins/red50percent.png" id="4_iksuv"]
+[ext_resource type="Script" uid="uid://cpseyynp5frxn" path="res://EditorCamera.cs" id="6_upp8x"]
+
+[sub_resource type="Environment" id="Environment_2rw65"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="3dEditorScene" type="Node3D" unique_id=47230994]
+
+[node name="SkinPainter" type="Node" parent="." unique_id=1660466776 node_paths=PackedStringArray("PlayerModel")]
+script = ExtResource("2_1nggn")
+PlayerModel = NodePath("../player2")
+DefaultTexture = ExtResource("3_iksuv")
+RedTexture = ExtResource("4_iksuv")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=994702750]
+environment = SubResource("Environment_2rw65")
+
+[node name="player2" parent="." unique_id=956273693 instance=ExtResource("2_dqbhk")]
+
+[node name="EditorCamera" type="Node3D" parent="." unique_id=566519494 node_paths=PackedStringArray("Camera", "Target", "CameraTarget")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("6_upp8x")
+Camera = NodePath("Camera3D")
+Target = NodePath("../EditorCameraTarget")
+CameraTarget = NodePath("CameraTarget")
+FollowSpeed = 30.0
+MouseSensitivity = 0.005
+CameraDistanceStep = 0.2
+PanSpeed = 0.005
+
+[node name="Camera3D" type="Camera3D" parent="EditorCamera" unique_id=1075077569]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.254, 2)
+
+[node name="CameraTarget" type="Node3D" parent="EditorCamera" unique_id=58619469]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="EditorCameraTarget" type="Node3D" parent="." unique_id=740214133]

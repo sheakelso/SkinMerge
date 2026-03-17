@@ -7,13 +7,12 @@
 [ext_resource type="Material" uid="uid://fifk5u5jo5s0" path="res://materials/paint_overlays/paint_overlay.tres" id="4_ht1c8"]
 [ext_resource type="Script" uid="uid://thnyg43d23si" path="res://PaintableMesh.cs" id="5_kbsxf"]
 [ext_resource type="Texture2D" uid="uid://d3oe4asptbklg" path="res://skins/steve.png" id="5_rgeog"]
-[ext_resource type="Texture2D" uid="uid://jh6dy5px5xby" path="res://textures/Image.png" id="6_kbsxf"]
+[ext_resource type="Material" uid="uid://f43jlgbwgrqi" path="res://materials/skin_layer.tres" id="6_kbsxf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6rdlb"]
 resource_name = "steve.png.001"
 transparency = 4
 cull_mode = 2
-albedo_texture = ExtResource("6_kbsxf")
 roughness = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_kesgs"]
@@ -429,7 +428,7 @@ mesh = SubResource("ArrayMesh_fg8si")
 
 [node name="Body_1" type="MeshInstance3D" parent="Waist/Body" unique_id=915903037]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 150)
-material_override = ExtResource("2_1txc5")
+material_override = ExtResource("6_kbsxf")
 material_overlay = ExtResource("4_ht1c8")
 mesh = SubResource("ArrayMesh_ydyu2")
 
@@ -444,7 +443,7 @@ mesh = SubResource("ArrayMesh_rny0c")
 
 [node name="Head_1" type="MeshInstance3D" parent="Waist/Head" unique_id=1330428734]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 150)
-material_override = ExtResource("2_1txc5")
+material_override = ExtResource("6_kbsxf")
 material_overlay = ExtResource("4_ht1c8")
 mesh = SubResource("ArrayMesh_ptx7f")
 
@@ -468,7 +467,7 @@ mesh = SubResource("ArrayMesh_80auo")
 
 [node name="Left Arm_1" type="MeshInstance3D" parent="Waist/Left Arm" unique_id=654654190]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.249998, 0, 137.5)
-material_override = ExtResource("2_1txc5")
+material_override = ExtResource("6_kbsxf")
 material_overlay = ExtResource("4_ht1c8")
 mesh = SubResource("ArrayMesh_knnep")
 
@@ -483,7 +482,7 @@ mesh = SubResource("ArrayMesh_2m5kg")
 
 [node name="Right Arm_1" type="MeshInstance3D" parent="Waist/Right Arm" unique_id=276338744]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.249998, 0, 137.5)
-material_override = ExtResource("2_1txc5")
+material_override = ExtResource("6_kbsxf")
 material_overlay = ExtResource("4_ht1c8")
 mesh = SubResource("ArrayMesh_vv20b")
 
@@ -498,7 +497,7 @@ mesh = SubResource("ArrayMesh_rb08d")
 
 [node name="Right Leg_1" type="MeshInstance3D" parent="Right Leg" unique_id=999511866]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.874999, 0, 75)
-material_override = ExtResource("2_1txc5")
+material_override = ExtResource("6_kbsxf")
 material_overlay = ExtResource("4_ht1c8")
 mesh = SubResource("ArrayMesh_y4tdk")
 
@@ -513,6 +512,6 @@ mesh = SubResource("ArrayMesh_qec7l")
 
 [node name="Left Leg_1" type="MeshInstance3D" parent="Left Leg" unique_id=1949775178]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.874999, 0, 75)
-material_override = ExtResource("2_1txc5")
+material_override = ExtResource("6_kbsxf")
 material_overlay = ExtResource("4_ht1c8")
 mesh = SubResource("ArrayMesh_ej2qo")

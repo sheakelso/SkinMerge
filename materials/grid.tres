@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b2rs0g7eolrhl"]
+
+[ext_resource type="Shader" uid="uid://bcirduosnlxbm" path="res://grid.gdshader" id="1_tdk5q"]
+
+[resource]
+shader = ExtResource("1_tdk5q")
+shader_parameter/grid_scale = 8
+shader_parameter/grid_color_a = Color(0.080783345, 0.080783345, 0.080783345, 1)
+shader_parameter/grid_color_b = Color(0.06469653, 0.06469653, 0.06469653, 1)
