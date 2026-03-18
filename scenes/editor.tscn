@@ -2,7 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://dhewfkfsstqey" path="res://scenes/3d_editor_scene.tscn" id="1_b1cmn"]
 [ext_resource type="Theme" uid="uid://1sljhw6el3lc" path="res://themes/editor.tres" id="1_eqbpn"]
+[ext_resource type="Texture2D" uid="uid://daw7qawwr77ek" path="res://textures/add_layer.png" id="2_5tm2q"]
 [ext_resource type="Material" uid="uid://b2rs0g7eolrhl" path="res://materials/grid.tres" id="2_ba0ut"]
+[ext_resource type="Texture2D" uid="uid://crikau3se74tw" path="res://textures/new_folder.png" id="3_j8y2p"]
+[ext_resource type="Texture2D" uid="uid://cvje2tvdm6s5a" path="res://textures/delete_layer.png" id="4_o435n"]
+[ext_resource type="Texture2D" uid="uid://bu21r7nml4fym" path="res://textures/move_layer_up.png" id="5_3vi5u"]
+[ext_resource type="Texture2D" uid="uid://qc3nk53jwpfg" path="res://textures/move_layer_down.png" id="6_78fwb"]
+
+[sub_resource type="DPITexture" id="DPITexture_5tm2q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5tm2q"]
 
 [node name="Editor" type="Control" unique_id=103337096]
 layout_mode = 3
@@ -21,9 +30,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_eqbpn")
-split_offsets = PackedInt32Array(100)
+split_offsets = PackedInt32Array(300)
 dragger_visibility = 2
-split_offset = 100
+split_offset = 300
 
 [node name="Panel" type="Panel" parent="HSplitContainer" unique_id=1224164868]
 custom_minimum_size = Vector2(100, 0)
@@ -31,7 +40,7 @@ layout_mode = 2
 theme = ExtResource("1_eqbpn")
 theme_type_variation = &"BasePanel"
 
-[node name="VSplitContainer" type="VSplitContainer" parent="HSplitContainer/Panel" unique_id=897215107]
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/Panel" unique_id=2010353744]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,15 +48,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_eqbpn")
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VSplitContainer" type="VSplitContainer" parent="HSplitContainer/Panel/MarginContainer" unique_id=897215107]
+layout_mode = 2
+theme = ExtResource("1_eqbpn")
 theme_override_constants/separation = 6
+theme_override_constants/minimum_grab_thickness = 0
+theme_override_icons/grabber = SubResource("DPITexture_5tm2q")
 split_offsets = PackedInt32Array(242)
 split_offset = 242
 
-[node name="LibraryWindow" type="Control" parent="HSplitContainer/Panel/VSplitContainer" unique_id=1006076096]
+[node name="UVWindow" type="Control" parent="HSplitContainer/Panel/MarginContainer/VSplitContainer" unique_id=1006076096]
 layout_mode = 2
 theme = ExtResource("1_eqbpn")
 
-[node name="Background" type="Panel" parent="HSplitContainer/Panel/VSplitContainer/LibraryWindow" unique_id=1853450597]
+[node name="Background" type="Panel" parent="HSplitContainer/Panel/MarginContainer/VSplitContainer/UVWindow" unique_id=1853450597]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -57,7 +76,60 @@ grow_vertical = 2
 theme = ExtResource("1_eqbpn")
 theme_type_variation = &"BasePanel"
 
-[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/Panel/VSplitContainer/LibraryWindow/Background" unique_id=2010353744]
+[node name="TabContainer" type="TabContainer" parent="HSplitContainer/Panel/MarginContainer/VSplitContainer/UVWindow/Background" unique_id=1010293104]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_eqbpn")
+current_tab = 0
+
+[node name="Library" type="Control" parent="HSplitContainer/Panel/MarginContainer/VSplitContainer/UVWindow/Background/TabContainer" unique_id=1073057858]
+layout_mode = 2
+theme = ExtResource("1_eqbpn")
+metadata/_tab_index = 0
+
+[node name="Panel" type="Panel" parent="HSplitContainer/Panel/MarginContainer/VSplitContainer/UVWindow/Background/TabContainer/Library" unique_id=516441679]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"InsetPanel"
+
+[node name="LayerWindow" type="Control" parent="HSplitContainer/Panel/MarginContainer/VSplitContainer" unique_id=855215895]
+layout_mode = 2
+theme = ExtResource("1_eqbpn")
+
+[node name="Background" type="Panel" parent="HSplitContainer/Panel/MarginContainer/VSplitContainer/LayerWindow" unique_id=1202286429]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_eqbpn")
+theme_type_variation = &"BasePanel"
+
+[node name="TabContainer" type="TabContainer" parent="HSplitContainer/Panel/MarginContainer/VSplitContainer/LayerWindow/Background" unique_id=283394571]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_eqbpn")
+current_tab = 0
+
+[node name="Layers" type="Control" parent="HSplitContainer/Panel/MarginContainer/VSplitContainer/LayerWindow/Background/TabContainer" unique_id=940388110]
+layout_mode = 2
+theme = ExtResource("1_eqbpn")
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/Panel/MarginContainer/VSplitContainer/LayerWindow/Background/TabContainer/Layers" unique_id=1790039154]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -70,21 +142,24 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="TabContainer" type="TabContainer" parent="HSplitContainer/Panel/VSplitContainer/LibraryWindow/Background/MarginContainer" unique_id=1010293104]
-layout_mode = 2
-theme = ExtResource("1_eqbpn")
-current_tab = 0
-
-[node name="Library" type="Control" parent="HSplitContainer/Panel/VSplitContainer/LibraryWindow/Background/MarginContainer/TabContainer" unique_id=1073057858]
-layout_mode = 2
-theme = ExtResource("1_eqbpn")
-metadata/_tab_index = 0
-
-[node name="LayerWindow" type="Control" parent="HSplitContainer/Panel/VSplitContainer" unique_id=855215895]
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/Panel/MarginContainer/VSplitContainer/LayerWindow/Background/TabContainer/Layers/MarginContainer" unique_id=888879409]
 layout_mode = 2
 theme = ExtResource("1_eqbpn")
 
-[node name="Background" type="Panel" parent="HSplitContainer/Panel/VSplitContainer/LayerWindow" unique_id=1202286429]
+[node name="HFlowContainer" type="HFlowContainer" parent="HSplitContainer/Panel/MarginContainer/VSplitContainer/LayerWindow/Background/TabContainer/Layers/MarginContainer/VBoxContainer" unique_id=864484652]
+layout_mode = 2
+theme = ExtResource("1_eqbpn")
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+alignment = 1
+
+[node name="AddLayer" type="Button" parent="HSplitContainer/Panel/MarginContainer/VSplitContainer/LayerWindow/Background/TabContainer/Layers/MarginContainer/VBoxContainer/HFlowContainer" unique_id=943678676]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+theme = ExtResource("1_eqbpn")
+theme_type_variation = &"FlatButton"
+
+[node name="TextureRect" type="TextureRect" parent="HSplitContainer/Panel/MarginContainer/VSplitContainer/LayerWindow/Background/TabContainer/Layers/MarginContainer/VBoxContainer/HFlowContainer/AddLayer" unique_id=736290804]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -92,9 +167,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_eqbpn")
-theme_type_variation = &"BasePanel"
+texture = ExtResource("2_5tm2q")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/Panel/VSplitContainer/LayerWindow/Background" unique_id=1054581727]
+[node name="AddFolder" type="Button" parent="HSplitContainer/Panel/MarginContainer/VSplitContainer/LayerWindow/Background/TabContainer/Layers/MarginContainer/VBoxContainer/HFlowContainer" unique_id=548390370]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+theme = ExtResource("1_eqbpn")
+theme_type_variation = &"FlatButton"
+
+[node name="TextureRect" type="TextureRect" parent="HSplitContainer/Panel/MarginContainer/VSplitContainer/LayerWindow/Background/TabContainer/Layers/MarginContainer/VBoxContainer/HFlowContainer/AddFolder" unique_id=1985860627]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -102,23 +185,80 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_eqbpn")
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
+texture = ExtResource("3_j8y2p")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="TabContainer" type="TabContainer" parent="HSplitContainer/Panel/VSplitContainer/LayerWindow/Background/MarginContainer" unique_id=283394571]
+[node name="DeleteLayer" type="Button" parent="HSplitContainer/Panel/MarginContainer/VSplitContainer/LayerWindow/Background/TabContainer/Layers/MarginContainer/VBoxContainer/HFlowContainer" unique_id=1909562137]
+custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 theme = ExtResource("1_eqbpn")
-current_tab = 0
+theme_type_variation = &"FlatButton"
 
-[node name="Layers" type="Control" parent="HSplitContainer/Panel/VSplitContainer/LayerWindow/Background/MarginContainer/TabContainer" unique_id=940388110]
+[node name="TextureRect" type="TextureRect" parent="HSplitContainer/Panel/MarginContainer/VSplitContainer/LayerWindow/Background/TabContainer/Layers/MarginContainer/VBoxContainer/HFlowContainer/DeleteLayer" unique_id=724655607]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_eqbpn")
+texture = ExtResource("4_o435n")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MoveLayerUp" type="Button" parent="HSplitContainer/Panel/MarginContainer/VSplitContainer/LayerWindow/Background/TabContainer/Layers/MarginContainer/VBoxContainer/HFlowContainer" unique_id=709084972]
+custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 theme = ExtResource("1_eqbpn")
-metadata/_tab_index = 0
+theme_type_variation = &"FlatButton"
+
+[node name="TextureRect" type="TextureRect" parent="HSplitContainer/Panel/MarginContainer/VSplitContainer/LayerWindow/Background/TabContainer/Layers/MarginContainer/VBoxContainer/HFlowContainer/MoveLayerUp" unique_id=826089078]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_eqbpn")
+texture = ExtResource("5_3vi5u")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MoveLayerDown" type="Button" parent="HSplitContainer/Panel/MarginContainer/VSplitContainer/LayerWindow/Background/TabContainer/Layers/MarginContainer/VBoxContainer/HFlowContainer" unique_id=1795387244]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+theme = ExtResource("1_eqbpn")
+theme_type_variation = &"FlatButton"
+
+[node name="TextureRect" type="TextureRect" parent="HSplitContainer/Panel/MarginContainer/VSplitContainer/LayerWindow/Background/TabContainer/Layers/MarginContainer/VBoxContainer/HFlowContainer/MoveLayerDown" unique_id=483215311]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_eqbpn")
+texture = ExtResource("6_78fwb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Control" type="Control" parent="HSplitContainer/Panel/MarginContainer/VSplitContainer/LayerWindow/Background/TabContainer/Layers/MarginContainer/VBoxContainer" unique_id=266454721]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Tree" type="Tree" parent="HSplitContainer/Panel/MarginContainer/VSplitContainer/LayerWindow/Background/TabContainer/Layers/MarginContainer/VBoxContainer/Control" unique_id=2136526716]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"LayerTree"
 
 [node name="Control" type="Control" parent="HSplitContainer" unique_id=1096924169]
 layout_mode = 2
+theme = ExtResource("1_eqbpn")
 
 [node name="Panel" type="Panel" parent="HSplitContainer/Control" unique_id=148323121]
 material = ExtResource("2_ba0ut")
@@ -128,6 +268,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_eqbpn")
+theme_override_styles/panel = SubResource("StyleBoxFlat_5tm2q")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="HSplitContainer/Control" unique_id=1352516833]
 layout_mode = 1
@@ -136,13 +278,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_eqbpn")
 stretch = true
 mouse_target = true
 
 [node name="SubViewport" type="SubViewport" parent="HSplitContainer/Control/SubViewportContainer" unique_id=880881541]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(1052, 648)
+physics_object_picking = true
+size = Vector2i(1620, 1080)
 render_target_update_mode = 4
 
 [node name="3dEditorScene" parent="HSplitContainer/Control/SubViewportContainer/SubViewport" unique_id=47230994 instance=ExtResource("1_b1cmn")]

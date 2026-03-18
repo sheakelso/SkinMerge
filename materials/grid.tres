@@ -5,5 +5,5 @@
 [resource]
 shader = ExtResource("1_tdk5q")
 shader_parameter/grid_scale = 8
-shader_parameter/grid_color_a = Color(0.080783345, 0.080783345, 0.080783345, 1)
-shader_parameter/grid_color_b = Color(0.06469653, 0.06469653, 0.06469653, 1)
+shader_parameter/grid_color_a = Color(0.12225228, 0.12225222, 0.12225223, 1)
+shader_parameter/grid_color_b = Color(0.07284262, 0.072842635, 0.072842605, 1)

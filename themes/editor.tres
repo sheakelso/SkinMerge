@@ -1,8 +1,45 @@
 [gd_resource type="Theme" format=3 uid="uid://1sljhw6el3lc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8cd8"]
-bg_color = Color(0.064696535, 0.06469653, 0.06469655, 1)
+bg_color = Color(0.16478667, 0.17, 0.15640001, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nsexq"]
+bg_color = Color(0.1274, 0.13, 0.1235, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aswgc"]
+
+[sub_resource type="SystemFont" id="SystemFont_y8cd8"]
+font_names = PackedStringArray("Sans-Serif")
+font_weight = 150
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sblyk"]
+bg_color = Color(0.16470589, 0.16862746, 0.15686275, 1)
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_budev"]
+content_margin_left = 6.0
+content_margin_right = 6.0
+bg_color = Color(0.16470589, 0.16862746, 0.15686275, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
 
 [resource]
 BasePanel/base_type = &"Panel"
 BasePanel/styles/panel = SubResource("StyleBoxFlat_y8cd8")
+InsetPanel/base_type = &"Panel"
+InsetPanel/styles/panel = SubResource("StyleBoxFlat_nsexq")
+LayerPanelButtons/base_type = &"Button"
+LayerPanelButtons/styles/normal = SubResource("StyleBoxFlat_aswgc")
+LayerTree/base_type = &"Tree"
+LayerTree/styles/panel = SubResource("StyleBoxFlat_nsexq")
+Panel/styles/panel = null
+TabContainer/constants/side_margin = 0
+TabContainer/fonts/font = SubResource("SystemFont_y8cd8")
+TabContainer/styles/panel = SubResource("StyleBoxFlat_sblyk")
+TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_budev")

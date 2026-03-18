@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://8pfhkg4rt6au" path="res://PlayerModelPart.cs" id="3_1hlws"]
 [ext_resource type="Script" uid="uid://thnyg43d23si" path="res://PaintableMesh.cs" id="3_ufh5k"]
 [ext_resource type="Material" uid="uid://bg61w7mpf058w" path="res://materials/layer.tres" id="4_jaoer"]
-[ext_resource type="Texture2D" uid="uid://fv62e8lbwifm" path="res://textures/Image_0.png" id="5_6iqoo"]
+[ext_resource type="Texture2D" uid="uid://fv62e8lbwifm" path="res://skins/Image_0.png" id="5_6iqoo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x3sgo"]
 size = Vector3(0.5, 0.75, 0.25)

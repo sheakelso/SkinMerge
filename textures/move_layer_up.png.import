@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qc3nk53jwpfg"
-path="res://.godot/imported/move_layer_down.png-6e0454be740be2b0ac7208ee29a6fd4d.ctex"
+uid="uid://bu21r7nml4fym"
+path="res://.godot/imported/move_layer_up.png-251c1cc94adbf6a8bb90430a9eec4656.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://skins/move_layer_down.png"
-dest_files=["res://.godot/imported/move_layer_down.png-6e0454be740be2b0ac7208ee29a6fd4d.ctex"]
+source_file="res://textures/move_layer_up.png"
+dest_files=["res://.godot/imported/move_layer_up.png-251c1cc94adbf6a8bb90430a9eec4656.ctex"]
 
 [params]
 

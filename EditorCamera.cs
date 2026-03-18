@@ -80,7 +80,6 @@ public partial class EditorCamera : Node3D
                 Target.Position += translation * PanSpeed;
             }
             
-            
             if (!Input.IsMouseButtonPressed(MouseButton.Left)) return;
             
             float toPositive = 90f - Target.RotationDegrees.X;

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://b1xtox0ngxb4e"]
+
+[ext_resource type="Script" uid="uid://1o1fp17xotpc" path="res://UI/DockableContainer.cs" id="1_5r7ke"]
+
+[node name="DockableWindowTest" type="Control" unique_id=1468714843]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DockableContainer" type="TabContainer" parent="." unique_id=493957026]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+script = ExtResource("1_5r7ke")
+metadata/_custom_type_script = "uid://1o1fp17xotpc"
+
+[node name="Control" type="Control" parent="DockableContainer" unique_id=2076041867]
+layout_mode = 2
+metadata/_tab_index = 0
