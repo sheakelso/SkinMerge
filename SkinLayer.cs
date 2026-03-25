@@ -1,21 +1,26 @@
+using System;
 using Godot;
+using Newtonsoft.Json;
 
 namespace SkinMerge;
 
-public class SkinLayer : ISkinLayer
+public abstract class SkinLayer
 {
-    private readonly Image _image;
-    
-    public SkinLayer(Image image)
-    {
-        _image = image;
-        image.Convert(Image.Format.Rgba8);
-    }
+    [JsonProperty("name")] public string Name;
+    [JsonProperty("visible")] private bool _visible = true;
 
-    public SkinLayer()
+    [JsonIgnore] public bool Visible
     {
-        _image = new Image();
+        get => _visible;
+        set
+        {
+            _visible = value;
+            Updated?.Invoke(this);
+        }
     }
     
-    public Image AsImage() => _image;
+    public event Action<SkinLayer> Updated;
+    public abstract Image AsImage();
+    public ImageTexture AsImageTexture() => ImageTexture.CreateFromImage(AsImage());
+    protected void InvokeUpdated() => Updated?.Invoke(this);
 }

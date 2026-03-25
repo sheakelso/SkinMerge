@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://chbv17rypyu5n"]
+
+[ext_resource type="Theme" uid="uid://1sljhw6el3lc" path="res://themes/editor.tres" id="1_cxirm"]
+[ext_resource type="Script" uid="uid://qalprx8d1nyf" path="res://UI/EditorUI/ColorContent.cs" id="1_w4su2"]
+
+[node name="Color" type="MarginContainer" unique_id=147610506 node_paths=PackedStringArray("_colorPicker")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1476.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_cxirm")
+script = ExtResource("1_w4su2")
+_colorPicker = NodePath("ColorPicker")
+
+[node name="ColorPicker" type="ColorPicker" parent="." unique_id=1776425926]
+layout_mode = 2
+theme = ExtResource("1_cxirm")
+edit_intensity = false
+deferred_mode = true
+color_modes_visible = false
+presets_visible = false

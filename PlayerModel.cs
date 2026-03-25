@@ -26,15 +26,17 @@ public partial class PlayerModel : Node3D
         }
     }
     
-    [Export] public Material DefaultSkinMaterial;
-    [Export] public Material DefaultLayerMaterial;
+    [Export] public ShaderMaterial DefaultSkinMaterial;
+    [Export] public ShaderMaterial DefaultLayerMaterial;
     [Export] public Texture2D DefaultTexture;
     
-    private Material _currentSkinMaterial;
-    private Material _currentLayerMaterial;
-    private Texture _currentTexture;
+    private ShaderMaterial _currentSkinMaterial;
+    private ShaderMaterial _currentLayerMaterial;
+    private ImageTexture _currentTexture;
 
-    public void SetMaterials(Material skin, Material layer)
+    [Export] private Color _pixelGridColor;
+
+    public void SetMaterials(ShaderMaterial skin, ShaderMaterial layer)
     {
         _currentSkinMaterial = skin;
         _currentLayerMaterial = layer;
@@ -44,10 +46,38 @@ public partial class PlayerModel : Node3D
         }
     }
 
-    public void SetTexture(Texture2D texture)
+    public void SetTexture(ImageTexture texture)
     {
         _currentTexture = texture;
-        _currentSkinMaterial.Set("albedo_texture", texture);
-        _currentLayerMaterial.Set("albedo_texture", texture);
+        _currentSkinMaterial.SetShaderParameter("albedo_texture", texture);
+        _currentLayerMaterial.SetShaderParameter("albedo_texture", texture);
+    }
+
+    public void SetHoveredPixel(Vector2I pixel)
+    {
+        _currentSkinMaterial.SetShaderParameter("hovered_pixel", pixel);
+        _currentLayerMaterial.SetShaderParameter("hovered_pixel", pixel);
+    }
+
+    public void SetPixelGridVisible(bool visible)
+    {
+        if (visible)
+        {
+            _currentSkinMaterial.SetShaderParameter("grid_color", _pixelGridColor);
+            _currentLayerMaterial.SetShaderParameter("grid_color", _pixelGridColor);
+        }
+        else
+        {
+            _currentSkinMaterial.SetShaderParameter("grid_color", Color.Color8(0,0,0,0));
+            _currentLayerMaterial.SetShaderParameter("grid_color", Color.Color8(0,0,0,0));
+        }
+    }
+
+    public void SetOuterLayerVisible(bool visible)
+    {
+        foreach (PlayerModelPart part in Parts)
+        {
+            part.SetOuterLayerVisible(visible);
+        }
     }
 }

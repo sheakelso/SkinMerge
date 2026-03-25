@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://csp77yqptdda2"]
+
+[ext_resource type="Script" uid="uid://5cyfxiykescy" path="res://UvEditorCamera.cs" id="1_q4ydh"]
+[ext_resource type="PackedScene" uid="uid://dc5k3s641piby" path="res://prefabs/uv_quad.tscn" id="1_tu3pa"]
+
+[node name="2dEditorScene" type="Node3D" unique_id=1196852839]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=255029807]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.9899405)
+projection = 1
+size = 2.0
+script = ExtResource("1_q4ydh")
+_panSpeed = 1.0
+_followSpeed = 30.0
+
+[node name="uv_quad" parent="." unique_id=1021048170 instance=ExtResource("1_tu3pa")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

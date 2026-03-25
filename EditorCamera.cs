@@ -5,6 +5,8 @@ namespace SkinMerge;
 
 public partial class EditorCamera : Node3D
 {
+    public static EditorCamera Instance { get; private set; }
+    
     [Export] public Camera3D Camera { get; set; }
     [Export] public Node3D Target { get; set; }
     [Export] public Node3D CameraTarget { get; set; }
@@ -16,6 +18,13 @@ public partial class EditorCamera : Node3D
     [Export] public float MaxCameraDistance { get; set; } = 10f;
     [Export] public float CameraDistanceStep { get; set; } = 0.1f;
     [Export] public float PanSpeed { get; set; } = 5f;
+
+    public bool DisableInput = false;
+
+    public EditorCamera()
+    {
+        Instance = this;
+    }
 
     public override void _Process(double delta)
     {
@@ -40,8 +49,11 @@ public partial class EditorCamera : Node3D
         Camera.Position = cameraPosition;
     }
 
-    public override void _Input(InputEvent @event)
+    private Vector2 _lastPosition;
+    private bool _ready;
+    public override void _UnhandledInput(InputEvent @event)
     {
+        if(DisableInput) return;
         if (@event is InputEventMouseButton eventMouseButton)
         {
             if (eventMouseButton.Pressed)
@@ -70,17 +82,27 @@ public partial class EditorCamera : Node3D
         
         if (@event is InputEventMouseMotion eventMouseMotion)
         {
-            Vector2 delta = eventMouseMotion.Relative;
+            Vector2 newPosition = GetViewport().GetMousePosition() / new Vector2(GetViewport().GetTexture().GetWidth(), GetViewport().GetTexture().GetWidth());
+            if (!_ready)
+            {
+                _ready = true;
+                _lastPosition = newPosition;
+                return;
+            }
+            Vector2 delta = newPosition - _lastPosition;
+            _lastPosition = newPosition;
 
             if (Input.IsMouseButtonPressed(MouseButton.Right))
             {
                 Vector3 translation = Vector3.Zero;
                 translation += Basis.X * -delta.X;
                 translation += Basis.Y * delta.Y;
-                Target.Position += translation * PanSpeed;
+                Target.Position += translation;
             }
             
             if (!Input.IsMouseButtonPressed(MouseButton.Left)) return;
+            
+            delta = eventMouseMotion.Relative;
             
             float toPositive = 90f - Target.RotationDegrees.X;
 

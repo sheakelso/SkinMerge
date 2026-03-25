@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://vta1cq6hrxjp"]
+
+[ext_resource type="Theme" uid="uid://1sljhw6el3lc" path="res://themes/editor.tres" id="1_eugxi"]
+[ext_resource type="Script" uid="uid://dqxnaba1egkj6" path="res://UI/DockableWindowFrame.cs" id="1_fa5ma"]
+[ext_resource type="Texture2D" uid="uid://ctcqqsrsmnjk0" path="res://textures/close.png" id="2_uhfqa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhfqa"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.11372549, 0.11764706, 0.10980392, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="DockableContentWindowFrame" type="Control" unique_id=131280266 node_paths=PackedStringArray("_contentParent", "_closeButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1559.0
+offset_bottom = -391.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fa5ma")
+_contentParent = NodePath("Panel/VBoxContainer/Content")
+_closeButton = NodePath("Panel/VBoxContainer/HBoxContainer/Button")
+
+[node name="Panel" type="Panel" parent="." unique_id=1216461471]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("1_eugxi")
+theme_type_variation = &"BasePanel"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=760848974]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer" unique_id=1394297565]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer/HBoxContainer" unique_id=711157796]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_uhfqa")
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/HBoxContainer/Button" unique_id=555713431]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_uhfqa")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Content" type="Control" parent="Panel/VBoxContainer" unique_id=925134846]
+layout_mode = 2
+size_flags_vertical = 3

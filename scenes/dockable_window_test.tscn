@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://b1xtox0ngxb4e"]
 
-[ext_resource type="Script" uid="uid://1o1fp17xotpc" path="res://UI/DockableContainer.cs" id="1_5r7ke"]
+[ext_resource type="Theme" uid="uid://1sljhw6el3lc" path="res://themes/editor.tres" id="1_gd84c"]
+[ext_resource type="Script" uid="uid://bdo4twb4lyu7t" path="res://UI/DockableSplitContainer.cs" id="2_35nm7"]
+[ext_resource type="Script" uid="uid://dvbplad5an8rp" path="res://UI/DockableTabContainer.cs" id="3_gd84c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gd84c"]
 
 [node name="DockableWindowTest" type="Control" unique_id=1468714843]
 layout_mode = 3
@@ -9,18 +13,114 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_gd84c")
 
-[node name="DockableContainer" type="TabContainer" parent="." unique_id=493957026]
+[node name="DockableLayout" type="Control" parent="." unique_id=348405760]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 0
-script = ExtResource("1_5r7ke")
-metadata/_custom_type_script = "uid://1o1fp17xotpc"
+theme = ExtResource("1_gd84c")
 
-[node name="Control" type="Control" parent="DockableContainer" unique_id=2076041867]
+[node name="HSplitContainer" type="HSplitContainer" parent="DockableLayout" unique_id=1522518416]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gd84c")
+split_offsets = PackedInt32Array(308, -16)
+split_offset = 308
+
+[node name="MarginContainer" type="MarginContainer" parent="DockableLayout/HSplitContainer" unique_id=1410237977]
 layout_mode = 2
+theme = ExtResource("1_gd84c")
+
+[node name="LeftSplitContainer" type="VSplitContainer" parent="DockableLayout/HSplitContainer/MarginContainer" unique_id=1486904249 node_paths=PackedStringArray("_visibilityContainer")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_gd84c")
+script = ExtResource("2_35nm7")
+_visibilityContainer = NodePath("..")
+
+[node name="TabContainer" type="TabContainer" parent="DockableLayout/HSplitContainer/MarginContainer/LeftSplitContainer" unique_id=1030856300]
+layout_mode = 2
+theme = ExtResource("1_gd84c")
+current_tab = 0
+drag_to_rearrange_enabled = true
+tabs_rearrange_group = 0
+script = ExtResource("3_gd84c")
+DropBoxWidth = 3.0
+DropBoxStyleBox = SubResource("StyleBoxFlat_gd84c")
+
+[node name="Control" type="Control" parent="DockableLayout/HSplitContainer/MarginContainer/LeftSplitContainer/TabContainer" unique_id=373359795]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("1_gd84c")
+metadata/_tab_index = 0
+
+[node name="CenterSplitContainer" type="VSplitContainer" parent="DockableLayout/HSplitContainer" unique_id=1289650759]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_gd84c")
+
+[node name="MarginContainer" type="MarginContainer" parent="DockableLayout/HSplitContainer/CenterSplitContainer" unique_id=863686126]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_gd84c")
+
+[node name="TopSplitContainer" type="HSplitContainer" parent="DockableLayout/HSplitContainer/CenterSplitContainer/MarginContainer" unique_id=1017970679 node_paths=PackedStringArray("_visibilityContainer")]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_gd84c")
+script = ExtResource("2_35nm7")
+_visibilityContainer = NodePath("..")
+
+[node name="MarginContainer2" type="MarginContainer" parent="DockableLayout/HSplitContainer" unique_id=1393071410]
+layout_mode = 2
+theme = ExtResource("1_gd84c")
+
+[node name="RightSplitContainer" type="VSplitContainer" parent="DockableLayout/HSplitContainer/MarginContainer2" unique_id=1830402097 node_paths=PackedStringArray("_visibilityContainer")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_gd84c")
+script = ExtResource("2_35nm7")
+_visibilityContainer = NodePath("..")
+
+[node name="TabContainer" type="TabContainer" parent="DockableLayout/HSplitContainer/MarginContainer2/RightSplitContainer" unique_id=523047354]
+layout_mode = 2
+theme = ExtResource("1_gd84c")
+current_tab = 0
+drag_to_rearrange_enabled = true
+tabs_rearrange_group = 0
+script = ExtResource("3_gd84c")
+DropBoxWidth = 3.0
+DropBoxStyleBox = SubResource("StyleBoxFlat_gd84c")
+
+[node name="Control1" type="Control" parent="DockableLayout/HSplitContainer/MarginContainer2/RightSplitContainer/TabContainer" unique_id=1804709659]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("1_gd84c")
+metadata/_tab_index = 0
+
+[node name="TabContainer2" type="TabContainer" parent="DockableLayout/HSplitContainer/MarginContainer2/RightSplitContainer" unique_id=1799843087]
+layout_mode = 2
+theme = ExtResource("1_gd84c")
+current_tab = 0
+drag_to_rearrange_enabled = true
+tabs_rearrange_group = 0
+script = ExtResource("3_gd84c")
+DropBoxWidth = 3.0
+DropBoxStyleBox = SubResource("StyleBoxFlat_gd84c")
+
+[node name="Control" type="Control" parent="DockableLayout/HSplitContainer/MarginContainer2/RightSplitContainer/TabContainer2" unique_id=1376380228]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("1_gd84c")
 metadata/_tab_index = 0

@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://dof4hp58wh78f"]
+
+[ext_resource type="Theme" uid="uid://1sljhw6el3lc" path="res://themes/editor.tres" id="1_bi2cr"]
+[ext_resource type="Script" uid="uid://dita4moqru6js" path="res://UI/EditorUI/LayerEditorContent.cs" id="2_hj03l"]
+[ext_resource type="Texture2D" uid="uid://daw7qawwr77ek" path="res://textures/add_layer.png" id="2_jncjk"]
+[ext_resource type="Texture2D" uid="uid://crikau3se74tw" path="res://textures/new_folder.png" id="3_hj03l"]
+[ext_resource type="Texture2D" uid="uid://rnk8v70ksi44" path="res://textures/layer_visible.png" id="3_k5v2y"]
+[ext_resource type="Texture2D" uid="uid://dh4v6cx2hds1g" path="res://textures/layer_invisible.png" id="4_g5s54"]
+[ext_resource type="Texture2D" uid="uid://cvje2tvdm6s5a" path="res://textures/delete_layer.png" id="4_k5v2y"]
+[ext_resource type="Texture2D" uid="uid://bu21r7nml4fym" path="res://textures/move_layer_up.png" id="5_g5s54"]
+[ext_resource type="Texture2D" uid="uid://qc3nk53jwpfg" path="res://textures/move_layer_down.png" id="6_axlx3"]
+
+[node name="Layers" type="MarginContainer" unique_id=1960924342 node_paths=PackedStringArray("_newLayerButton", "_newFolderButton", "_deleteButton", "_treeParent")]
+custom_minimum_size = Vector2(200, 500)
+offset_right = 287.0
+offset_bottom = 500.0
+theme = ExtResource("1_bi2cr")
+script = ExtResource("2_hj03l")
+_newLayerButton = NodePath("VBoxContainer/HFlowContainer/AddLayer")
+_newFolderButton = NodePath("VBoxContainer/HFlowContainer/AddFolder")
+_deleteButton = NodePath("VBoxContainer/HFlowContainer/DeleteLayer")
+_treeParent = NodePath("VBoxContainer/Control")
+_visibleButtonTexture = ExtResource("3_k5v2y")
+_hiddenButtonTexture = ExtResource("4_g5s54")
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1309017694]
+layout_mode = 2
+theme = ExtResource("1_bi2cr")
+
+[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer" unique_id=1802026058]
+layout_mode = 2
+theme = ExtResource("1_bi2cr")
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+alignment = 1
+
+[node name="AddLayer" type="Button" parent="VBoxContainer/HFlowContainer" unique_id=684258419]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("1_bi2cr")
+theme_type_variation = &"FlatButton"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HFlowContainer/AddLayer" unique_id=920860525]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_bi2cr")
+texture = ExtResource("2_jncjk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AddFolder" type="Button" parent="VBoxContainer/HFlowContainer" unique_id=670368650]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("1_bi2cr")
+theme_type_variation = &"FlatButton"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HFlowContainer/AddFolder" unique_id=1101916835]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_bi2cr")
+texture = ExtResource("3_hj03l")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DeleteLayer" type="Button" parent="VBoxContainer/HFlowContainer" unique_id=1881347287]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("1_bi2cr")
+theme_type_variation = &"FlatButton"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HFlowContainer/DeleteLayer" unique_id=295018745]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_bi2cr")
+texture = ExtResource("4_k5v2y")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MoveLayerUp" type="Button" parent="VBoxContainer/HFlowContainer" unique_id=1072528279]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("1_bi2cr")
+theme_type_variation = &"FlatButton"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HFlowContainer/MoveLayerUp" unique_id=964177340]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_bi2cr")
+texture = ExtResource("5_g5s54")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MoveLayerDown" type="Button" parent="VBoxContainer/HFlowContainer" unique_id=1750669058]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("1_bi2cr")
+theme_type_variation = &"FlatButton"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HFlowContainer/MoveLayerDown" unique_id=121476807]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_bi2cr")
+texture = ExtResource("6_axlx3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=1329770232]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1

@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://cu4kcrla2jqlp"]
+
+[ext_resource type="Theme" uid="uid://1sljhw6el3lc" path="res://themes/editor.tres" id="1_n6fyn"]
+[ext_resource type="Texture2D" uid="uid://l5nnw7gjx8s3" path="res://textures/swap.png" id="2_cpyox"]
+[ext_resource type="Script" uid="uid://by0cfb7nrp34i" path="res://UI/EditorUI/ViewportEditorContent.cs" id="2_kqehq"]
+[ext_resource type="Material" uid="uid://b2rs0g7eolrhl" path="res://materials/grid.tres" id="3_kqehq"]
+[ext_resource type="PackedScene" uid="uid://dhewfkfsstqey" path="res://scenes/3d_editor_scene.tscn" id="4_4lijb"]
+[ext_resource type="PackedScene" uid="uid://csp77yqptdda2" path="res://scenes/2d_editor_scene.tscn" id="6_kqehq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sdh1e"]
+bg_color = Color(0.16470589, 0.16862746, 0.15686275, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
+[node name="Viewport" type="MarginContainer" unique_id=299302948 node_paths=PackedStringArray("_3dButton", "_uvButton", "_splitDirectionButton", "_swapButton", "_3dControl", "_uvControl", "_splitContainer")]
+theme = ExtResource("1_n6fyn")
+script = ExtResource("2_kqehq")
+_3dButton = NodePath("Viewport/PanelContainer/HBoxContainer/3DButton")
+_uvButton = NodePath("Viewport/PanelContainer/HBoxContainer/UVButton")
+_splitDirectionButton = NodePath("Viewport/PanelContainer/HBoxContainer/OptionButton")
+_swapButton = NodePath("Viewport/PanelContainer/HBoxContainer/Button")
+_3dControl = NodePath("Viewport/Viewport/3D")
+_uvControl = NodePath("Viewport/Viewport/UV")
+_splitContainer = NodePath("Viewport/Viewport")
+metadata/_tab_index = 0
+
+[node name="Viewport" type="VBoxContainer" parent="." unique_id=627375575]
+layout_mode = 2
+theme = ExtResource("1_n6fyn")
+theme_override_constants/separation = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="Viewport" unique_id=460688320]
+layout_mode = 2
+theme = ExtResource("1_n6fyn")
+theme_override_styles/panel = SubResource("StyleBoxFlat_sdh1e")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Viewport/PanelContainer" unique_id=43591340]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+alignment = 2
+
+[node name="3DButton" type="CheckButton" parent="Viewport/PanelContainer/HBoxContainer" unique_id=997731183]
+layout_mode = 2
+button_pressed = true
+text = "3D"
+
+[node name="UVButton" type="CheckButton" parent="Viewport/PanelContainer/HBoxContainer" unique_id=116212182]
+layout_mode = 2
+button_pressed = true
+text = "UV"
+
+[node name="OptionButton" type="OptionButton" parent="Viewport/PanelContainer/HBoxContainer" unique_id=1393339737]
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "Vertical"
+popup/item_0/id = 0
+popup/item_1/text = "Horizontal"
+popup/item_1/id = 1
+
+[node name="Button" type="Button" parent="Viewport/PanelContainer/HBoxContainer" unique_id=1329280223]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+icon = ExtResource("2_cpyox")
+flat = true
+expand_icon = true
+
+[node name="Viewport" type="SplitContainer" parent="Viewport" unique_id=606720019]
+material = ExtResource("3_kqehq")
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_n6fyn")
+split_offsets = PackedInt32Array(757)
+split_offset = 757
+
+[node name="3D" type="PanelContainer" parent="Viewport/Viewport" unique_id=660565811]
+material = ExtResource("3_kqehq")
+layout_mode = 2
+theme = ExtResource("1_n6fyn")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Viewport/Viewport/3D" unique_id=749386915]
+layout_mode = 2
+theme = ExtResource("1_n6fyn")
+stretch = true
+mouse_target = true
+
+[node name="SubViewport" type="SubViewport" parent="Viewport/Viewport/3D/SubViewportContainer" unique_id=819426174]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+physics_object_picking = true
+size = Vector2i(289, 2)
+render_target_update_mode = 4
+
+[node name="3dEditorScene" parent="Viewport/Viewport/3D/SubViewportContainer/SubViewport" unique_id=47230994 instance=ExtResource("4_4lijb")]
+
+[node name="UV" type="PanelContainer" parent="Viewport/Viewport" unique_id=230913251]
+material = ExtResource("3_kqehq")
+layout_mode = 2
+theme = ExtResource("1_n6fyn")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Viewport/Viewport/UV" unique_id=892083764]
+layout_mode = 2
+theme = ExtResource("1_n6fyn")
+stretch = true
+mouse_target = true
+
+[node name="SubViewport" type="SubViewport" parent="Viewport/Viewport/UV/SubViewportContainer" unique_id=1159374715]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+physics_object_picking = true
+size = Vector2i(2, 2)
+render_target_update_mode = 4
+
+[node name="2dEditorScene" parent="Viewport/Viewport/UV/SubViewportContainer/SubViewport" unique_id=1196852839 instance=ExtResource("6_kqehq")]

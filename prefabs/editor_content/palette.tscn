@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://bx3asabcaqsj2"]
+
+[ext_resource type="Theme" uid="uid://1sljhw6el3lc" path="res://themes/editor.tres" id="1_icml4"]
+[ext_resource type="Texture2D" uid="uid://bx3e3mc4f1wfu" path="res://textures/edit.png" id="1_it5js"]
+[ext_resource type="Script" uid="uid://bw5t2pwgebkcd" path="res://UI/EditorUI/PaletteContent.cs" id="2_yccxn"]
+[ext_resource type="Texture2D" uid="uid://daw7qawwr77ek" path="res://textures/add_layer.png" id="3_yccxn"]
+
+[node name="Palette" type="MarginContainer" unique_id=1474145357 node_paths=PackedStringArray("_paletteButton", "_paletteNameEdit", "_paletteRenameButton", "_rowParent")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1620.0
+offset_bottom = -580.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_icml4")
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+script = ExtResource("2_yccxn")
+_paletteButton = NodePath("VBoxContainer/HBoxContainer/OptionButton")
+_paletteNameEdit = NodePath("VBoxContainer/HBoxContainer/LineEdit")
+_paletteRenameButton = NodePath("VBoxContainer/HBoxContainer/Button")
+_rowParent = NodePath("VBoxContainer/PanelContainer/MarginContainer/VBoxContainer")
+_addIcon = ExtResource("3_yccxn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1396605801]
+layout_mode = 2
+theme = ExtResource("1_icml4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1669577115]
+layout_mode = 2
+theme = ExtResource("1_icml4")
+alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer" unique_id=1121652466]
+layout_mode = 2
+theme = ExtResource("1_icml4")
+selected = 0
+item_count = 3
+popup/item_0/text = "Palette"
+popup/item_0/id = 2
+popup/item_1/id = 1
+popup/item_1/separator = true
+popup/item_2/text = "New Palette"
+popup/item_2/id = 0
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer" unique_id=1500149932]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_icml4")
+expand_to_text_length = true
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=958697497]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+theme = ExtResource("1_icml4")
+icon = ExtResource("1_it5js")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=1539672188]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_icml4")
+theme_type_variation = &"InsetPanelContainer"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer" unique_id=414845455]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer" unique_id=1655778986]
+layout_mode = 2

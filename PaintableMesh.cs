@@ -1,12 +1,13 @@
 using System;
 using Godot;
+using SkinMerge;
 using Array = Godot.Collections.Array;
 
 public partial class PaintableMesh : StaticBody3D
 {
     [Export] public MeshInstance3D Mesh;
-    [Export] public ShaderMaterial PaintOverlayMaterial;
     
+    private static bool _isPainting = false;
     private Vector2I _textureResolution = new(64, 64);
     private Vector2I _hoveredPixel =  new(-1, -1);
     
@@ -32,7 +33,33 @@ public partial class PaintableMesh : StaticBody3D
             if (pixelCoordinate != _hoveredPixel)
             {
                 _hoveredPixel = pixelCoordinate;
-                PaintOverlayMaterial.SetShaderParameter("hovered_pixel", pixelCoordinate);
+                SkinPainter.Instance.PlayerModel.SetHoveredPixel(pixelCoordinate);
+                if (_isPainting)
+                {
+                    Editor.Instance.PaintingLayer.SetPixel(_hoveredPixel.X, _hoveredPixel.Y, Editor.CurrentProject.GetCurrentColor());
+                }
+            }
+        }
+
+        if (@event is InputEventMouseButton mouseButton)
+        {
+            if (mouseButton.Pressed && mouseButton.ButtonIndex == MouseButton.Left)
+            {
+                Editor.Instance.PaintingLayer.SetPixel(_hoveredPixel.X, _hoveredPixel.Y, Editor.CurrentProject.GetCurrentColor());
+                _isPainting = true;
+                EditorCamera.Instance.DisableInput = true;
+            }
+        }
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        if (@event is InputEventMouseButton mouseButton)
+        {
+            if (mouseButton.ButtonIndex == MouseButton.Left && !mouseButton.Pressed)
+            {
+                _isPainting = false;
+                EditorCamera.Instance.DisableInput = false;
             }
         }
     }

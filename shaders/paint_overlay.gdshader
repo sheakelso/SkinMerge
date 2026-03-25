@@ -1,7 +1,7 @@
 shader_type spatial;
-render_mode depth_prepass_alpha;
+render_mode unshaded, depth_prepass_alpha;
 
-uniform sampler2D albedo_texture: filter_nearest;
+uniform sampler2D albedo_texture: filter_nearest, source_color;
 uniform vec4 color : source_color;
 
 uniform vec4 grid_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
@@ -28,14 +28,15 @@ void fragment() {
 	ALBEDO = texture(albedo_texture, UV).rgb * color.rgb;
 	ALPHA = texture(albedo_texture, UV).a * color.a;
 	
+	float one_minus_alpha = 1.0f - ALPHA;
 	if(pixel_pos == hovered_pixel){
 		float one_minus_alpha_pixel = 1.0f - hovered_pixel_color.a;
-		float one_minus_alpha = 1.0f - ALPHA;
 		ALBEDO = one_minus_alpha_pixel * ALBEDO + hovered_pixel_color.rgb * hovered_pixel_color.a;
 		ALPHA += one_minus_alpha * hovered_pixel_color.a;
 	}
 	if(m_min < grid_line_width) {
-		ALPHA = 1.0f * grid_color.a;
-		ALBEDO = grid_color.xyz;
+		float one_minus_alpha_pixel = 1.0f - grid_color.a;
+		ALBEDO = one_minus_alpha_pixel * ALBEDO + grid_color.rgb * grid_color.a;
+		ALPHA += one_minus_alpha * grid_color.a;
 	}
 }
