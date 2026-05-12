@@ -17,11 +17,35 @@ public partial class Editor : Node
     private Color _secondaryColor = Color.Color8(0, 0, 0);
     public ImageSkinLayer PaintingLayer => FocusedLayer is ImageSkinLayer ? (ImageSkinLayer)FocusedLayer : null;
 
+    public event Action EditorReady;
+    public event Action<Tool> ToolSelected;
+    
+    [Export] public Tool[] Tools { get; private set; }
+    
+    [Export] private Tool _selectedTool;
+
+    public Tool SelectedTool
+    {
+        get => _selectedTool;
+        set
+        {
+            _selectedTool = value;
+            ToolSelected?.Invoke(value);
+        }
+    }
+
     public Editor()
     {
         Instance = this;
         CurrentProject = SkinProject.LoadOrCreateProject("project.skp");
         CurrentProject.RootLayer.GenerateImage();
+    }
+
+    public override void _Ready()
+    {
+        SelectedTool = Tools[0];
+        EditorReady?.Invoke();
+        ToolSelected?.Invoke(_selectedTool);
     }
 
     public void UpdateSelectedLayers(SkinLayer[] selectedLayers, SkinLayer focusedLayer)

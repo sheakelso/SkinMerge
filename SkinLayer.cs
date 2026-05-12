@@ -4,10 +4,10 @@ using Newtonsoft.Json;
 
 namespace SkinMerge;
 
-public abstract class SkinLayer
+public abstract class SkinLayer(string name = "New Layer", bool visible = true)
 {
-    [JsonProperty("name")] public string Name;
-    [JsonProperty("visible")] private bool _visible = true;
+    [JsonProperty("name")] public string Name = name;
+    [JsonProperty("visible")] private bool _visible = visible;
 
     [JsonIgnore] public bool Visible
     {

@@ -3,9 +3,13 @@
 [ext_resource type="Theme" uid="uid://1sljhw6el3lc" path="res://themes/editor.tres" id="1_n6fyn"]
 [ext_resource type="Texture2D" uid="uid://l5nnw7gjx8s3" path="res://textures/swap.png" id="2_cpyox"]
 [ext_resource type="Script" uid="uid://by0cfb7nrp34i" path="res://UI/EditorUI/ViewportEditorContent.cs" id="2_kqehq"]
+[ext_resource type="Script" uid="uid://ckrmbg27nu6vf" path="res://UI/EditorUI/ToolOptionButton.cs" id="3_4lijb"]
 [ext_resource type="Material" uid="uid://b2rs0g7eolrhl" path="res://materials/grid.tres" id="3_kqehq"]
 [ext_resource type="PackedScene" uid="uid://dhewfkfsstqey" path="res://scenes/3d_editor_scene.tscn" id="4_4lijb"]
+[ext_resource type="Script" uid="uid://bw88d0o86vybf" path="res://UI/EditorUI/ToolSettings.cs" id="4_nlfg8"]
 [ext_resource type="PackedScene" uid="uid://csp77yqptdda2" path="res://scenes/2d_editor_scene.tscn" id="6_kqehq"]
+[ext_resource type="Script" uid="uid://iujdluquqpnv" path="res://SkinPainter.cs" id="8_0mxst"]
+[ext_resource type="Material" uid="uid://ch8uwgds4oaal" path="res://materials/paint_overlays/skin.tres" id="9_nlfg8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sdh1e"]
 bg_color = Color(0.16470589, 0.16862746, 0.15686275, 1)
@@ -13,12 +17,14 @@ corner_radius_top_left = 6
 corner_radius_top_right = 6
 
 [node name="Viewport" type="MarginContainer" unique_id=299302948 node_paths=PackedStringArray("_3dButton", "_uvButton", "_splitDirectionButton", "_swapButton", "_3dControl", "_uvControl", "_splitContainer")]
+offset_right = 844.0
+offset_bottom = 47.0
 theme = ExtResource("1_n6fyn")
 script = ExtResource("2_kqehq")
-_3dButton = NodePath("Viewport/PanelContainer/HBoxContainer/3DButton")
-_uvButton = NodePath("Viewport/PanelContainer/HBoxContainer/UVButton")
-_splitDirectionButton = NodePath("Viewport/PanelContainer/HBoxContainer/OptionButton")
-_swapButton = NodePath("Viewport/PanelContainer/HBoxContainer/Button")
+_3dButton = NodePath("Viewport/PanelContainer/TopBar/ViewportOptions/3DButton")
+_uvButton = NodePath("Viewport/PanelContainer/TopBar/ViewportOptions/UVButton")
+_splitDirectionButton = NodePath("Viewport/PanelContainer/TopBar/ViewportOptions/OptionButton")
+_swapButton = NodePath("Viewport/PanelContainer/TopBar/ViewportOptions/Button")
 _3dControl = NodePath("Viewport/Viewport/3D")
 _uvControl = NodePath("Viewport/Viewport/UV")
 _splitContainer = NodePath("Viewport/Viewport")
@@ -34,22 +40,74 @@ layout_mode = 2
 theme = ExtResource("1_n6fyn")
 theme_override_styles/panel = SubResource("StyleBoxFlat_sdh1e")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Viewport/PanelContainer" unique_id=43591340]
+[node name="TopBar" type="HBoxContainer" parent="Viewport/PanelContainer" unique_id=760842636]
+layout_mode = 2
+theme = ExtResource("1_n6fyn")
+
+[node name="ToolOptions" type="HBoxContainer" parent="Viewport/PanelContainer/TopBar" unique_id=1106438812]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_n6fyn")
+theme_override_constants/separation = 12
+
+[node name="OptionButton" type="OptionButton" parent="Viewport/PanelContainer/TopBar/ToolOptions" unique_id=1540178994]
+layout_mode = 2
+theme = ExtResource("1_n6fyn")
+fit_to_longest_item = false
+script = ExtResource("3_4lijb")
+
+[node name="ToolSettings" type="HBoxContainer" parent="Viewport/PanelContainer/TopBar/ToolOptions" unique_id=1896427612]
+layout_mode = 2
+theme = ExtResource("1_n6fyn")
+theme_override_constants/separation = 12
+script = ExtResource("4_nlfg8")
+
+[node name="FieldBox" type="HBoxContainer" parent="Viewport/PanelContainer/TopBar/ToolOptions/ToolSettings" unique_id=669261329]
+layout_mode = 2
+theme = ExtResource("1_n6fyn")
+alignment = 1
+
+[node name="Label" type="Label" parent="Viewport/PanelContainer/TopBar/ToolOptions/ToolSettings/FieldBox" unique_id=964705149]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Sized"
+
+[node name="HSlider" type="HSlider" parent="Viewport/PanelContainer/TopBar/ToolOptions/ToolSettings/FieldBox" unique_id=23718160]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="SpinFIeld" type="HBoxContainer" parent="Viewport/PanelContainer/TopBar/ToolOptions/ToolSettings" unique_id=1943614131]
+layout_mode = 2
+theme = ExtResource("1_n6fyn")
+
+[node name="Label" type="Label" parent="Viewport/PanelContainer/TopBar/ToolOptions/ToolSettings/SpinFIeld" unique_id=1621267512]
+layout_mode = 2
+theme = ExtResource("1_n6fyn")
+theme_override_font_sizes/font_size = 12
+text = "Size"
+
+[node name="SpinBox" type="SpinBox" parent="Viewport/PanelContainer/TopBar/ToolOptions/ToolSettings/SpinFIeld" unique_id=1556466666]
+layout_mode = 2
+theme = ExtResource("1_n6fyn")
+
+[node name="ViewportOptions" type="HBoxContainer" parent="Viewport/PanelContainer/TopBar" unique_id=43591340]
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
+theme = ExtResource("1_n6fyn")
 alignment = 2
 
-[node name="3DButton" type="CheckButton" parent="Viewport/PanelContainer/HBoxContainer" unique_id=997731183]
+[node name="3DButton" type="CheckButton" parent="Viewport/PanelContainer/TopBar/ViewportOptions" unique_id=997731183]
 layout_mode = 2
 button_pressed = true
 text = "3D"
 
-[node name="UVButton" type="CheckButton" parent="Viewport/PanelContainer/HBoxContainer" unique_id=116212182]
+[node name="UVButton" type="CheckButton" parent="Viewport/PanelContainer/TopBar/ViewportOptions" unique_id=116212182]
 layout_mode = 2
 button_pressed = true
 text = "UV"
 
-[node name="OptionButton" type="OptionButton" parent="Viewport/PanelContainer/HBoxContainer" unique_id=1393339737]
+[node name="OptionButton" type="OptionButton" parent="Viewport/PanelContainer/TopBar/ViewportOptions" unique_id=1393339737]
 layout_mode = 2
 selected = 0
 item_count = 2
@@ -58,7 +116,7 @@ popup/item_0/id = 0
 popup/item_1/text = "Horizontal"
 popup/item_1/id = 1
 
-[node name="Button" type="Button" parent="Viewport/PanelContainer/HBoxContainer" unique_id=1329280223]
+[node name="Button" type="Button" parent="Viewport/PanelContainer/TopBar/ViewportOptions" unique_id=1329280223]
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 icon = ExtResource("2_cpyox")
@@ -89,7 +147,7 @@ own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
 physics_object_picking = true
-size = Vector2i(289, 2)
+size = Vector2i(757, 2)
 render_target_update_mode = 4
 
 [node name="3dEditorScene" parent="Viewport/Viewport/3D/SubViewportContainer/SubViewport" unique_id=47230994 instance=ExtResource("4_4lijb")]
@@ -110,7 +168,12 @@ own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
 physics_object_picking = true
-size = Vector2i(2, 2)
+size = Vector2i(75, 2)
 render_target_update_mode = 4
 
 [node name="2dEditorScene" parent="Viewport/Viewport/UV/SubViewportContainer/SubViewport" unique_id=1196852839 instance=ExtResource("6_kqehq")]
+
+[node name="Node" type="Node" parent="." unique_id=1256659249 node_paths=PackedStringArray("PlayerModel")]
+script = ExtResource("8_0mxst")
+PlayerModel = NodePath("")
+ModelMaterial = ExtResource("9_nlfg8")

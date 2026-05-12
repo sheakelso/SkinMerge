@@ -56,9 +56,9 @@ public partial class LayerEditorContent : EditorContent
     {
         if (Editor.FocusedLayer is CompositeSkinLayer compositeLayer)
         {
-            compositeLayer.AddLayer(new ImageSkinLayer("New Layer"));
+            compositeLayer.AddLayer(ImageSkinLayer.CreateEmpty());
         }
-        else Editor.CurrentProject.RootLayer.AddLayer(new ImageSkinLayer("New Layer"));
+        else Editor.CurrentProject.RootLayer.AddLayer(ImageSkinLayer.CreateEmpty());
     }
 
     private void OnNewFolderClicked()
@@ -129,7 +129,7 @@ public partial class LayerEditorContent : EditorContent
         layerItem.SetCellMode(0, TreeItem.TreeCellMode.Check);
         layerItem.SetSelectable(0, false);
         layerItem.SetEditable(0, true);
-        layerItem.SetChecked(0, true);
+        layerItem.SetChecked(0, layer.Visible);
         
         _skinLayers.Add(layerItem, layer);
 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Godot;
 using SkinMerge;
 using Array = Godot.Collections.Array;
@@ -6,62 +7,91 @@ using Array = Godot.Collections.Array;
 public partial class PaintableMesh : StaticBody3D
 {
     [Export] public MeshInstance3D Mesh;
+    [Export] public Part Part;
     
     private static bool _isPainting = false;
     private Vector2I _textureResolution = new(64, 64);
     private Vector2I _hoveredPixel =  new(-1, -1);
-    
+
+    public override void _Ready()
+    {
+        MouseEntered += OnEntered;
+        MouseExited += OnExited;
+    }
+
+    private int _lastDir = -1;
+    private bool GetFaceChanged(Vector3 eventPosition)
+    {
+        Vector3 normal = GetNormalAtPoint(eventPosition);
+        int dir = GetDir(normal);
+        if (dir != _lastDir)
+        {
+            _lastDir = dir;
+            GD.Print("CHANGED");
+            return true;
+        }
+
+        return false;
+    }
+
+    private int GetDir(Vector3 normal)
+    {
+        if (normal.X > normal.Y && normal.X > normal.Z) return 0;
+        if (normal.Y > normal.X && normal.Y > normal.Z) return 1;
+        if (normal.Z > normal.Y && normal.Z > normal.X) return 2;
+        
+        if (normal.X < normal.Y && normal.X < normal.Z) return 3;
+        if (normal.Y < normal.X && normal.Y < normal.Z) return 4;
+        if (normal.Z < normal.Y && normal.Z < normal.X) return 5;
+
+        return -1;
+    }
+
+    private void OnEntered()
+    {
+        SkinPainter.Instance.MouseEntered(Part);
+    }
+
+    private void OnExited()
+    {
+        SkinPainter.Instance.MouseExited(Part);
+        _lastDir = -1;
+    }
+
     public override void _InputEvent(Camera3D camera, InputEvent @event, Vector3 eventPosition, Vector3 normal, int shapeIdx)
     {
         if (@event is InputEventMouseMotion)
         {
-            Vector3 localPosition = Mesh.ToLocal(eventPosition);
-
-            Array arrays = Mesh.Mesh.SurfaceGetArrays(0);
-            Vector3[] vertices = arrays[(int)Godot.Mesh.ArrayType.Vertex].AsVector3Array();
-            Vector2[] uvs = arrays[(int)Godot.Mesh.ArrayType.TexUV].AsVector2Array();
-            Vector3[] normals = arrays[(int)Godot.Mesh.ArrayType.Normal].AsVector3Array();
-            
-            int triangleIndex = GetClosestTriangleIndex(vertices, localPosition);
-
-            Vector3[] triangle = [vertices[triangleIndex], vertices[triangleIndex + 1], vertices[triangleIndex + 2]];
-            Vector2[] triangleUvs = [uvs[triangleIndex], uvs[triangleIndex + 1], uvs[triangleIndex + 2]];
-            
-            Vector2 uv = GetUVAtPoint(triangle, triangleUvs, localPosition);
-            Vector2I pixelCoordinate = UVToPixelCoordinate(uv, _textureResolution);
-
-            if (pixelCoordinate != _hoveredPixel)
-            {
-                _hoveredPixel = pixelCoordinate;
-                SkinPainter.Instance.PlayerModel.SetHoveredPixel(pixelCoordinate);
-                if (_isPainting)
-                {
-                    Editor.Instance.PaintingLayer.SetPixel(_hoveredPixel.X, _hoveredPixel.Y, Editor.CurrentProject.GetCurrentColor());
-                }
-            }
+            if(GetFaceChanged(eventPosition)) SkinPainter.Instance.FaceChanged();
+            SkinPainter.Instance.MouseMotion(Part, GetTextureMousePosition(eventPosition));
         }
 
         if (@event is InputEventMouseButton mouseButton)
         {
-            if (mouseButton.Pressed && mouseButton.ButtonIndex == MouseButton.Left)
-            {
-                Editor.Instance.PaintingLayer.SetPixel(_hoveredPixel.X, _hoveredPixel.Y, Editor.CurrentProject.GetCurrentColor());
-                _isPainting = true;
-                EditorCamera.Instance.DisableInput = true;
-            }
+            SkinPainter.Instance.MouseClicked(Part, GetTextureMousePosition(eventPosition), mouseButton.ButtonIndex, mouseButton.Pressed);
         }
     }
 
-    public override void _Input(InputEvent @event)
+    public Vector2 GetTextureMousePosition(Vector3 eventPosition)
     {
-        if (@event is InputEventMouseButton mouseButton)
-        {
-            if (mouseButton.ButtonIndex == MouseButton.Left && !mouseButton.Pressed)
-            {
-                _isPainting = false;
-                EditorCamera.Instance.DisableInput = false;
-            }
-        }
+        Vector2 uv = GetUVMousePosition(eventPosition);
+        return uv * _textureResolution;
+    }
+
+    public Vector2 GetUVMousePosition(Vector3 eventPosition)
+    {
+        Vector3 localPosition = Mesh.ToLocal(eventPosition);
+
+        Array arrays = Mesh.Mesh.SurfaceGetArrays(0);
+        Vector3[] vertices = arrays[(int)Godot.Mesh.ArrayType.Vertex].AsVector3Array();
+        Vector2[] uvs = arrays[(int)Godot.Mesh.ArrayType.TexUV].AsVector2Array();
+            
+        int triangleIndex = GetClosestTriangleIndex(vertices, localPosition);
+
+        Vector3[] triangle = [vertices[triangleIndex], vertices[triangleIndex + 1], vertices[triangleIndex + 2]];
+        Vector2[] triangleUvs = [uvs[triangleIndex], uvs[triangleIndex + 1], uvs[triangleIndex + 2]];
+        
+        return GetUVAtPoint(triangle, triangleUvs, localPosition);
     }
 
     private static int GetClosestTriangleIndex(Vector3[] vertices, Vector3 point)
@@ -150,9 +180,16 @@ public partial class PaintableMesh : StaticBody3D
         return u * uvs[0] + v * uvs[1] + w * uvs[2];
     }
 
-    private static Vector2I UVToPixelCoordinate(Vector2 uv, Vector2I resolution)
+    private Vector3 GetNormalAtPoint(Vector3 eventPosition)
     {
-        Vector2 pixelCoordinate = uv * resolution;
-        return new Vector2I(Mathf.FloorToInt(pixelCoordinate.X), Mathf.FloorToInt(pixelCoordinate.Y));
+        Vector3 localPosition = Mesh.ToLocal(eventPosition);
+        
+        Array arrays = Mesh.Mesh.SurfaceGetArrays(0);
+        Vector3[] vertices = arrays[(int)Godot.Mesh.ArrayType.Vertex].AsVector3Array();
+        Vector3[] normals = arrays[(int)Godot.Mesh.ArrayType.Normal].AsVector3Array();
+            
+        int triangleIndex = GetClosestTriangleIndex(vertices, localPosition);
+        
+        return normals[triangleIndex];
     }
 }

@@ -10,9 +10,23 @@ public partial class CompositeSkinLayer : SkinLayer
     public event Action<CompositeSkinLayer, SkinLayer> LayerRemoved;
     public event Action<CompositeSkinLayer, SkinLayer> LayerAdded;
     
-    [JsonProperty("layers")] private readonly List<SkinLayer> _layers = new List<SkinLayer>();
     [JsonIgnore] private Image _cachedImage;
-    [JsonIgnore] public SkinLayer[] Layers => _layers.ToArray();
+
+    [JsonIgnore] private List<SkinLayer> _layers = new List<SkinLayer>();
+
+    [JsonProperty("layers")]
+    public SkinLayer[] Layers
+    {
+        get => _layers.ToArray();
+        private set
+        {
+            _layers.Clear();
+            foreach (SkinLayer layer in value)
+            {
+                AddLayer(layer);
+            }
+        }
+    }
 
     public CompositeSkinLayer(string name)
     {
@@ -74,5 +88,13 @@ public partial class CompositeSkinLayer : SkinLayer
     private void OnLayerUpdated(SkinLayer layer)
     {
         GenerateImage();
+    }
+
+    private void AddLayers(IEnumerable<SkinLayer> layers)
+    {
+        foreach (SkinLayer layer in layers)
+        {
+            AddLayer(layer);
+        }
     }
 }

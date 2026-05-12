@@ -9,8 +9,15 @@ public class ImageSkinLayer : SkinLayer
     [JsonIgnore] private readonly Image _image;
     [JsonProperty("image")] public string Base64 => Convert.ToBase64String(_image.SavePngToBuffer());
 
+    public static ImageSkinLayer CreateEmpty(string name = "New Layer")
+    {
+        Image image = Image.CreateEmpty(64, 64, false, Image.Format.Rgba8);
+        ImageSkinLayer layer = new ImageSkinLayer(image, name);
+        return layer;
+    }
+
     [JsonConstructor]
-    public ImageSkinLayer(string image)
+    public ImageSkinLayer(string image, string name, bool visible) : base(name, visible)
     {
         _image = new Image();
         _image.LoadPngFromBuffer(Convert.FromBase64String(image));
@@ -21,12 +28,6 @@ public class ImageSkinLayer : SkinLayer
         Name = name;
         _image = image;
         image.Convert(Image.Format.Rgba8);
-    }
-
-    public ImageSkinLayer(string name, Image image = null)
-    {
-        Name = name;
-        _image = Image.CreateEmpty(64, 64, false, Image.Format.Rgba8);
     }
     
     public override Image AsImage() => _image;

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public partial class PlayerModel : Node3D
 {
+    public static PlayerModel Instance;
+    
     [Export] public PlayerModelPart Head;
     [Export] public PlayerModelPart Body;
     [Export] public PlayerModelPart RightArm;
@@ -35,6 +37,11 @@ public partial class PlayerModel : Node3D
     private ImageTexture _currentTexture;
 
     [Export] private Color _pixelGridColor;
+
+    public PlayerModel()
+    {
+        Instance = this;
+    }
 
     public void SetMaterials(ShaderMaterial skin, ShaderMaterial layer)
     {

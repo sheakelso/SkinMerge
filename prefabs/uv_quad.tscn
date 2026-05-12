@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://dc5k3s641piby"]
 
-[ext_resource type="Material" uid="uid://beh3v8gol31au" path="res://materials/paint_overlays/layer.tres" id="1_0qfcl"]
-[ext_resource type="Material" uid="uid://ch8uwgds4oaal" path="res://materials/paint_overlays/skin.tres" id="3_0qfcl"]
+[ext_resource type="Material" uid="uid://ch8uwgds4oaal" path="res://materials/paint_overlays/skin.tres" id="1_2trwb"]
 [ext_resource type="Script" uid="uid://thnyg43d23si" path="res://PaintableMesh.cs" id="3_w23ms"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g1n4a"]
@@ -43,13 +42,12 @@ size = Vector3(2, 2, 0.001)
 
 [node name="Plane" type="MeshInstance3D" parent="." unique_id=735458307]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
-material_override = ExtResource("1_0qfcl")
+material_override = ExtResource("1_2trwb")
 mesh = SubResource("ArrayMesh_k004n")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=569825318 node_paths=PackedStringArray("Mesh")]
 script = ExtResource("3_w23ms")
 Mesh = NodePath("../Plane")
-PaintOverlayMaterial = ExtResource("3_0qfcl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1228127982]
 shape = SubResource("BoxShape3D_hcum4")

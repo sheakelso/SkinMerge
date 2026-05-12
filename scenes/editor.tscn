@@ -3,9 +3,11 @@
 [ext_resource type="Theme" uid="uid://1sljhw6el3lc" path="res://themes/editor.tres" id="1_eqbpn"]
 [ext_resource type="Script" uid="uid://dhat1jxw58lxn" path="res://Editor.cs" id="2_3vi5u"]
 [ext_resource type="Script" uid="uid://na6spo28ue0q" path="res://UI/DockableLayout.cs" id="2_o435n"]
+[ext_resource type="Texture2D" uid="uid://dpfcibcvibl1a" path="res://textures/tools/draw.png" id="3_0u1f5"]
 [ext_resource type="Script" uid="uid://dvbplad5an8rp" path="res://UI/DockableTabContainer.cs" id="3_3vi5u"]
 [ext_resource type="PackedScene" uid="uid://vta1cq6hrxjp" path="res://prefabs/dockable_content_window_frame.tscn" id="3_74j0u"]
 [ext_resource type="Script" uid="uid://bdo4twb4lyu7t" path="res://UI/DockableSplitContainer.cs" id="3_78fwb"]
+[ext_resource type="Script" uid="uid://g26jprwpbhds" path="res://Tools/PaintTool.cs" id="4_5tdu1"]
 [ext_resource type="Script" uid="uid://eyp6vyanwe0v" path="res://UI/EditorUI/FilePopupMenu.cs" id="5_78fwb"]
 [ext_resource type="PackedScene" uid="uid://dof4hp58wh78f" path="res://prefabs/editor_content/layers.tscn" id="6_j8y2p"]
 [ext_resource type="Script" uid="uid://d2jf3d3loy1kk" path="res://UI/EditorUI/LayerPopupMenu.cs" id="6_sdh1e"]
@@ -15,9 +17,16 @@
 [ext_resource type="PackedScene" uid="uid://cfefls8iqekei" path="res://prefabs/editor_content/player_model.tscn" id="12_74j0u"]
 [ext_resource type="Script" uid="uid://dlk0id1ciae35" path="res://UI/DropBoxRenderer.cs" id="12_78fwb"]
 
+[sub_resource type="Resource" id="Resource_q8l03"]
+script = ExtResource("4_5tdu1")
+Name = "Paint"
+Icon = ExtResource("3_0u1f5")
+metadata/_custom_type_script = "uid://g26jprwpbhds"
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_74j0u"]
 
 [node name="Editor" type="Control" unique_id=103337096]
+process_priority = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,6 +35,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_eqbpn")
 script = ExtResource("2_3vi5u")
+Tools = Array[Object]([SubResource("Resource_q8l03")])
+_selectedTool = SubResource("Resource_q8l03")
 
 [node name="EditorLayout" type="Control" parent="." unique_id=2009452635 node_paths=PackedStringArray("_leftSplitContainer", "_rightSplitContainer", "_mainPanel", "_dropBoxRenderer")]
 layout_mode = 1
@@ -93,8 +104,8 @@ theme_override_constants/margin_bottom = 4
 [node name="VSplitContainer" type="VSplitContainer" parent="EditorLayout/VBoxContainer/HSplitContainer/Panel/MarginContainer" unique_id=897215107 node_paths=PackedStringArray("_visibilityContainer")]
 layout_mode = 2
 theme = ExtResource("1_eqbpn")
-split_offsets = PackedInt32Array(227, 0)
-split_offset = 227
+split_offsets = PackedInt32Array(231)
+split_offset = 231
 script = ExtResource("3_78fwb")
 _visibilityContainer = NodePath("..")
 
@@ -132,13 +143,6 @@ layout_mode = 2
 mouse_filter = 1
 theme = ExtResource("1_eqbpn")
 metadata/_tab_index = 1
-
-[node name="TabContainer3" type="TabContainer" parent="EditorLayout/VBoxContainer/HSplitContainer/Panel/MarginContainer/VSplitContainer" unique_id=969701678]
-layout_mode = 2
-theme = ExtResource("1_eqbpn")
-drag_to_rearrange_enabled = true
-tabs_rearrange_group = 0
-script = ExtResource("3_3vi5u")
 
 [node name="Viewport" type="PanelContainer" parent="EditorLayout/VBoxContainer/HSplitContainer" unique_id=2026097554]
 layout_mode = 2
