@@ -4,12 +4,21 @@ using SkinMerge;
 
 public enum Part
 {
+    None = -1,
+    
     Head,
     Body,
     LeftArm,
     RightArm,
     LeftLeg,
     RightLeg,
+    
+    HeadLayer,
+    BodyLayer,
+    LeftArmLayer,
+    RightArmLayer,
+    LeftLegLayer,
+    RightLegLayer,
     
     UV
 }
@@ -19,6 +28,8 @@ public partial class SkinPainter : Node
     public static SkinPainter Instance { get; private set; }
     [Export] public PlayerModel PlayerModel { get; set; }
     [Export] public ShaderMaterial ModelMaterial;
+
+    public ModelFace CurrentFace = ModelFace.None;
 
     public override void _Ready()
     {
@@ -57,9 +68,10 @@ public partial class SkinPainter : Node
         Editor.Instance.SelectedTool.TextureMouseExited(part);
     }
 
-    public void FaceChanged()
+    public void FaceChanged(ModelFace newFace)
     {
-        Editor.Instance.SelectedTool.FaceChanged();
+        CurrentFace = newFace;
+        Editor.Instance.SelectedTool.FaceChanged(newFace);
     }
 
     public override void _Input(InputEvent @event)

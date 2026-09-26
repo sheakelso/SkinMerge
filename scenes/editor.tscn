@@ -23,6 +23,15 @@ Name = "Paint"
 Icon = ExtResource("3_0u1f5")
 metadata/_custom_type_script = "uid://g26jprwpbhds"
 
+[sub_resource type="InputEventKey" id="InputEventKey_5tdu1"]
+device = -1
+ctrl_pressed = true
+keycode = 83
+unicode = 115
+
+[sub_resource type="Shortcut" id="Shortcut_q8l03"]
+events = [SubResource("InputEventKey_5tdu1")]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_74j0u"]
 
 [node name="Editor" type="Control" unique_id=103337096]
@@ -36,6 +45,7 @@ grow_vertical = 2
 theme = ExtResource("1_eqbpn")
 script = ExtResource("2_3vi5u")
 Tools = Array[Object]([SubResource("Resource_q8l03")])
+SaveShortcut = SubResource("Shortcut_q8l03")
 _selectedTool = SubResource("Resource_q8l03")
 
 [node name="EditorLayout" type="Control" parent="." unique_id=2009452635 node_paths=PackedStringArray("_leftSplitContainer", "_rightSplitContainer", "_mainPanel", "_dropBoxRenderer")]

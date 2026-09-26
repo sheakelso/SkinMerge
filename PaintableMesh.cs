@@ -18,33 +18,47 @@ public partial class PaintableMesh : StaticBody3D
         MouseEntered += OnEntered;
         MouseExited += OnExited;
     }
-
-    private int _lastDir = -1;
-    private bool GetFaceChanged(Vector3 eventPosition)
+    
+    private ModelFace _lastFace;
+    private void UpdateFace(Vector3 eventPosition)
     {
-        Vector3 normal = GetNormalAtPoint(eventPosition);
-        int dir = GetDir(normal);
-        if (dir != _lastDir)
-        {
-            _lastDir = dir;
-            GD.Print("CHANGED");
-            return true;
-        }
+        Vector2 texturePos =  GetTextureMousePosition(eventPosition);
+        Vector2I pixelPos = new Vector2I((int)texturePos.X, (int)texturePos.Y);
+        ModelFace modelFace = UVMappings.GetModelFaceFromPixel(pixelPos);
 
-        return false;
+        if (!modelFace.Equals(_lastFace))
+        {
+            _lastFace = modelFace;
+            SkinPainter.Instance.FaceChanged(modelFace);
+            GD.Print("Part: " + modelFace.Part + ", Side: " + modelFace.Side);
+        }
     }
 
-    private int GetDir(Vector3 normal)
+    private ModelSide GetSide(Vector3 normal)
     {
-        if (normal.X > normal.Y && normal.X > normal.Z) return 0;
-        if (normal.Y > normal.X && normal.Y > normal.Z) return 1;
-        if (normal.Z > normal.Y && normal.Z > normal.X) return 2;
-        
-        if (normal.X < normal.Y && normal.X < normal.Z) return 3;
-        if (normal.Y < normal.X && normal.Y < normal.Z) return 4;
-        if (normal.Z < normal.Y && normal.Z < normal.X) return 5;
+        float xAbs = Mathf.Abs(normal.X);
+        float yAbs = Mathf.Abs(normal.Y);
+        float zAbs = Mathf.Abs(normal.Z);
 
-        return -1;
+        if (xAbs > yAbs && xAbs > zAbs)
+        {
+            if (normal.X > 0) return ModelSide.Front;
+            return ModelSide.Back;
+        }
+
+        if (yAbs > xAbs && yAbs > zAbs)
+        {
+            if (normal.Y > 0) return ModelSide.Left;
+            return ModelSide.Right;
+        }
+
+        if (zAbs > xAbs && zAbs > yAbs)
+        {
+            if (normal.Z > 0) return ModelSide.Top;
+            return ModelSide.Bottom;
+        }
+
+        return ModelSide.None;
     }
 
     private void OnEntered()
@@ -55,14 +69,14 @@ public partial class PaintableMesh : StaticBody3D
     private void OnExited()
     {
         SkinPainter.Instance.MouseExited(Part);
-        _lastDir = -1;
+        _lastFace = ModelFace.None;
     }
 
     public override void _InputEvent(Camera3D camera, InputEvent @event, Vector3 eventPosition, Vector3 normal, int shapeIdx)
     {
         if (@event is InputEventMouseMotion)
         {
-            if(GetFaceChanged(eventPosition)) SkinPainter.Instance.FaceChanged();
+            UpdateFace(eventPosition);
             SkinPainter.Instance.MouseMotion(Part, GetTextureMousePosition(eventPosition));
         }
 

@@ -7,7 +7,7 @@ using SkinMerge.Data;
 
 namespace SkinMerge;
 
-public partial class Editor : Node
+public partial class Editor : Control
 {
     public static Editor Instance { get; private set; }
     public static SkinProject CurrentProject { get; private set; }
@@ -21,6 +21,7 @@ public partial class Editor : Node
     public event Action<Tool> ToolSelected;
     
     [Export] public Tool[] Tools { get; private set; }
+    [Export] public Shortcut SaveShortcut;
     
     [Export] private Tool _selectedTool;
 
@@ -52,5 +53,13 @@ public partial class Editor : Node
     {
         SelectedLayers = selectedLayers;
         FocusedLayer = focusedLayer;
+    }
+
+    public override void _UnhandledKeyInput(InputEvent @event)
+    {
+        if (SaveShortcut.MatchesEvent(@event))
+        {
+            CurrentProject.Save();
+        }
     }
 }

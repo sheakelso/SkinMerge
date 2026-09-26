@@ -11,7 +11,7 @@ public abstract partial class Tool : Resource
     public virtual void TextureMouseMotion(Part part, Vector2 position) { }
     public virtual void TextureMouseClicked(Part part, Vector2 position, MouseButton button, bool pressed) { }
     public virtual void Input(InputEvent @event) { }
-    public virtual void FaceChanged() { }
+    public virtual void FaceChanged(ModelFace newFace) { }
     public virtual void TextureMouseEntered(Part part) { }
     public virtual void TextureMouseExited(Part part) { }
 }

@@ -11,9 +11,18 @@ public partial class PaintTool : Tool
 
     private Vector2I hoveredPixel;
     private Vector2I lastPixel;
+    private ModelFace _lastFace = ModelFace.None;
+    
     public override void TextureMouseMotion(Part part, Vector2 position)
     {
         bool newFace = false;
+
+        if (_lastFace != SkinPainter.Instance.CurrentFace)
+        {
+            _lastFace = SkinPainter.Instance.CurrentFace;
+            newFace = true;
+        }
+        
         Vector2I pixel = new Vector2I((int)position.X, (int)position.Y);
         if (pixel != hoveredPixel)
         {
@@ -27,11 +36,11 @@ public partial class PaintTool : Tool
             Color color = Editor.CurrentProject.GetCurrentColor();
             
             layer.SetPixel(pixel.X, pixel.Y, color);
-            return;
+            //return;
 
-            if (newFace)
+            if (lastPixel == -Vector2I.One)
             {
-                layer.SetPixel(pixel.X, pixel.Y, color);
+                lastPixel = pixel;
                 return;
             }
             
@@ -95,8 +104,8 @@ public partial class PaintTool : Tool
         }
     }
 
-    public override void FaceChanged()
+    public override void FaceChanged(ModelFace newFace)
     {
-        lastPixel = new Vector2I(-1, -1);
+        lastPixel = -Vector2I.One;
     }
 }
