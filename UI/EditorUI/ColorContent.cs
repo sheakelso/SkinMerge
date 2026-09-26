@@ -15,6 +15,7 @@ public partial class ColorContent : EditorContent
     {
         if (_colorPicker.Color != Editor.CurrentProject.GetCurrentColor())
         {
+            GD.Print(_colorPicker.Color);
             Editor.CurrentProject.SetCurrentColor(_colorPicker.Color);
         }
     }
