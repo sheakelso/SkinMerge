@@ -7,7 +7,8 @@
 [ext_resource type="Script" uid="uid://dvbplad5an8rp" path="res://UI/DockableTabContainer.cs" id="3_3vi5u"]
 [ext_resource type="PackedScene" uid="uid://vta1cq6hrxjp" path="res://prefabs/dockable_content_window_frame.tscn" id="3_74j0u"]
 [ext_resource type="Script" uid="uid://bdo4twb4lyu7t" path="res://UI/DockableSplitContainer.cs" id="3_78fwb"]
-[ext_resource type="Script" uid="uid://g26jprwpbhds" path="res://Tools/PaintTool.cs" id="4_5tdu1"]
+[ext_resource type="Resource" uid="uid://dusvvx0qe0p5o" path="res://editor/tools/pencil.tres" id="3_q8l03"]
+[ext_resource type="Script" uid="uid://g26jprwpbhds" path="res://Tools/PencilTool.cs" id="4_5tdu1"]
 [ext_resource type="Script" uid="uid://eyp6vyanwe0v" path="res://UI/EditorUI/FilePopupMenu.cs" id="5_78fwb"]
 [ext_resource type="PackedScene" uid="uid://dof4hp58wh78f" path="res://prefabs/editor_content/layers.tscn" id="6_j8y2p"]
 [ext_resource type="Script" uid="uid://d2jf3d3loy1kk" path="res://UI/EditorUI/LayerPopupMenu.cs" id="6_sdh1e"]
@@ -17,12 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://cfefls8iqekei" path="res://prefabs/editor_content/player_model.tscn" id="12_74j0u"]
 [ext_resource type="Script" uid="uid://dlk0id1ciae35" path="res://UI/DropBoxRenderer.cs" id="12_78fwb"]
 
-[sub_resource type="Resource" id="Resource_q8l03"]
-script = ExtResource("4_5tdu1")
-Name = "Paint"
-Icon = ExtResource("3_0u1f5")
-metadata/_custom_type_script = "uid://g26jprwpbhds"
-
 [sub_resource type="InputEventKey" id="InputEventKey_5tdu1"]
 device = -1
 ctrl_pressed = true
@@ -31,6 +26,12 @@ unicode = 115
 
 [sub_resource type="Shortcut" id="Shortcut_q8l03"]
 events = [SubResource("InputEventKey_5tdu1")]
+
+[sub_resource type="Resource" id="Resource_q8l03"]
+script = ExtResource("4_5tdu1")
+Name = "Pencil"
+Icon = ExtResource("3_0u1f5")
+metadata/_custom_type_script = "uid://g26jprwpbhds"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_74j0u"]
 
@@ -44,7 +45,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_eqbpn")
 script = ExtResource("2_3vi5u")
-Tools = Array[Object]([SubResource("Resource_q8l03")])
+Tools = Array[Object]([ExtResource("3_q8l03")])
 SaveShortcut = SubResource("Shortcut_q8l03")
 _selectedTool = SubResource("Resource_q8l03")
 
